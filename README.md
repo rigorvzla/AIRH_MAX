@@ -26,7 +26,7 @@ AIRH es un asistente de inteligencia artificial activado por voz, diseñado para
 ## 🚀 Instalación Rápida
 
 1. **Descarga** la versión adecuada desde la sección [Releases](https://github.com/tu-usuario/av-airh/releases).
-2. **Ejecuta** el instalador para tu sistema operativo (Windows/Linux/macOS).
+2. **Ejecuta** el instalador para tu sistema operativo (Windows).
 3. **Sigue** el asistente de configuración inicial (calibración de micrófono y voz).
 
 ---
