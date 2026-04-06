@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Controls\CPU\Alarma\Alarma_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\CPU\DetalladoMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\CPU\Lineal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\CPU\LinealMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\CPU\Plus\Plus_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\CPU\TOP\Top_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\GPU\Alarma\Alarma_DetalladoMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\GPU\DetalladoMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\GPU\Plus\Plus_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\HDD\Alarma\Alarma_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\HDD\CircularMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\HDD\DetalladoMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\HDD\Plus\Plus_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\HDD\TOP\Top_Detalle_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\INF\INF_Detalle_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\INF\Mini.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RAM\Alarma\Alarma_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RAM\DetalladoMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RAM\Lineal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RAM\LinealMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RAM\Plus\Plus_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RAM\TOP\Top_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RED\Alarma\Alarma_Detallado_MD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RED\DetalladoMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RED\TOP\Top_DetalladoMD.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\CPU\Alarma\Alarma_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\CPU\DetalladoMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\CPU\Lineal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\CPU\LinealMD_2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\CPU\LinealMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\CPU\Plus\Plus_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\CPU\TOP\Top_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\GPU\Alarma\Alarma_DetalladoMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\GPU\DetalladoMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\GPU\Plus\Plus_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\HDD\Alarma\Alarma_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\HDD\CircularMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\HDD\DetalladoMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\HDD\Plus\Plus_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\HDD\TOP\Top_Detalle_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\INF\INF_Detalle_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\INF\Mini.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RAM\Alarma\Alarma_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RAM\DetalladoMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RAM\Lineal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RAM\LinealMD_2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RAM\LinealMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RAM\Plus\Plus_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RAM\TOP\Top_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RED\Alarma\Alarma_Detallado_MD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RED\DetalladoMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RED\TOP\Top_DetalladoMD.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

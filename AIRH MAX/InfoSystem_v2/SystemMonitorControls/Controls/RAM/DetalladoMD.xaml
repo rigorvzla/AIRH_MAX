@@ -1,0 +1,343 @@
+﻿<UserControl x:Class="SystemMonitorControls.RAM.DetalladoMD"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SystemMonitorControls.RAM"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Estilo moderno para los botones de acción -->
+            <Style x:Key="ModernActionButton"
+                   TargetType="Button">
+                <Setter Property="Width"
+                        Value="32" />
+                <Setter Property="Height"
+                        Value="32" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="BorderBrush"
+                        Value="#40FFFFFF" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Foreground"
+                        Value="White" />
+                <Setter Property="Cursor"
+                        Value="Hand" />
+                <Setter Property="materialDesign:RippleAssist.Feedback"
+                        Value="White" />
+                <Setter Property="materialDesign:RippleAssist.IsCentered"
+                        Value="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse x:Name="BorderEllipse"
+                                         Stroke="{TemplateBinding BorderBrush}"
+                                         StrokeThickness="{TemplateBinding BorderThickness}"
+                                         Fill="{TemplateBinding Background}" />
+                                <Ellipse x:Name="BackgroundEllipse"
+                                         Fill="Transparent"
+                                         Margin="2" />
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter TargetName="BorderEllipse"
+                                            Property="Stroke"
+                                            Value="#81d4fa" />
+                                    <Setter TargetName="BorderEllipse"
+                                            Property="StrokeThickness"
+                                            Value="2" />
+                                    <Setter TargetName="BackgroundEllipse"
+                                            Property="Fill">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="White"
+                                                             Opacity="0.1" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground"
+                                            Value="#81d4fa" />
+                                </Trigger>
+                                <Trigger Property="IsPressed"
+                                         Value="True">
+                                    <Setter TargetName="BackgroundEllipse"
+                                            Property="Fill">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="White"
+                                                             Opacity="0.2" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Estilo moderno para el icono PopupBox (Memory) -->
+            <Style x:Key="ModernMemoryIconStyle"
+                   TargetType="materialDesign:PopupBox">
+                <Setter Property="Width"
+                        Value="36" />
+                <Setter Property="Height"
+                        Value="36" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="BorderBrush"
+                        Value="#40FFFFFF" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="materialDesign:RippleAssist.Feedback"
+                        Value="White" />
+                <Setter Property="materialDesign:RippleAssist.IsCentered"
+                        Value="True" />
+                <Setter Property="PopupMode"
+                        Value="MouseOver" />
+                <Setter Property="Focusable"
+                        Value="False" />
+                <Setter Property="materialDesign:ElevationAssist.Elevation"
+                        Value="Dp6" />
+                <Setter Property="PopupUniformCornerRadius"
+                        Value="8" />
+                <Setter Property="PlacementMode"
+                        Value="BottomAndAlignCentres" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="materialDesign:PopupBox">
+                            <Grid>
+                                <Ellipse x:Name="BorderEllipse"
+                                         Stroke="{TemplateBinding BorderBrush}"
+                                         StrokeThickness="{TemplateBinding BorderThickness}"
+                                         Fill="{TemplateBinding Background}" />
+                                <Ellipse x:Name="BackgroundEllipse"
+                                         Fill="Transparent"
+                                         Margin="2" />
+                                <ContentPresenter x:Name="ToggleContentPresenter"
+                                                  Content="{TemplateBinding ToggleContent}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                                <Popup x:Name="Popup"
+                                       PlacementTarget="{Binding ElementName=BorderEllipse}"
+                                       Placement="{TemplateBinding PlacementMode}"
+                                       PopupAnimation="Fade"
+                                       AllowsTransparency="True"
+                                       IsOpen="{Binding IsPopupOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <Border Background="#1A2A3A"
+                                            BorderBrush="#81d4fa"
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            Padding="12"
+                                            Effect="{StaticResource MaterialDesignShadowDepth2}">
+                                        <ContentPresenter Content="{TemplateBinding PopupContent}" />
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter TargetName="BorderEllipse"
+                                            Property="Stroke"
+                                            Value="#81d4fa" />
+                                    <Setter TargetName="BorderEllipse"
+                                            Property="StrokeThickness"
+                                            Value="2" />
+                                    <Setter TargetName="BackgroundEllipse"
+                                            Property="Fill">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="White"
+                                                             Opacity="0.1" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPopupOpen"
+                                         Value="True">
+                                    <Setter TargetName="BorderEllipse"
+                                            Property="Stroke"
+                                            Value="#81d4fa" />
+                                    <Setter TargetName="BorderEllipse"
+                                            Property="StrokeThickness"
+                                            Value="2" />
+                                    <Setter TargetName="BackgroundEllipse"
+                                            Property="Fill">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="#81d4fa"
+                                                             Opacity="0.2" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Estilo alternativo para botones con fondo sutil -->
+            <Style x:Key="ModernActionButtonWithBg"
+                   TargetType="Button"
+                   BasedOn="{StaticResource ModernActionButton}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="White"
+                                         Opacity="0.05" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderBrush"
+                        Value="#30FFFFFF" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel Name="gridTotal">
+        <TextBlock Text="RAM"
+                   Height="20"
+                   HorizontalAlignment="Center"
+                   Foreground="AliceBlue"
+                   Name="txbRAMTitulo"
+                   FontWeight="Bold" />
+
+        <materialDesign:Card Width="180"
+                             Margin="10">
+            <materialDesign:Card.Background>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#FF02010F"
+                                  Offset="0" />
+                    <GradientStop Color="#FF0F2F52"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </materialDesign:Card.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Botón principal con sombra en lugar de fondo cuadrado -->
+                <Grid HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Margin="0,10,0,0">
+                    <!-- Sombra sutíl para dar profundidad -->
+                    <Border Width="80"
+                            Height="80"
+                            CornerRadius="40"
+                            Background="Transparent">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                              ShadowDepth="4"
+                                              Color="#40000000"
+                                              Opacity="0.5" />
+                        </Border.Effect>
+                    </Border>
+
+                    <!-- Botón principal sin fondo cuadrado -->
+                    <Button materialDesign:ButtonProgressAssist.IndicatorBackground="#ffcc80"
+                            materialDesign:ButtonProgressAssist.IndicatorForeground="#e65100"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            Name="btnRAM"
+                            Click="btnRAM_Click"
+                            Background="#81d4fa"
+                            BorderBrush="#81d4fa"
+                            Foreground="#DD000000"
+                            Width="70"
+                            Height="70"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}">
+                        <Button.Content>
+                            <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="12"
+                                       Name="txbRAMP" />
+                        </Button.Content>
+                    </Button>
+                </Grid>
+
+                <!-- Icono Memory mejorado con estilo moderno -->
+                <materialDesign:PopupBox Style="{StaticResource ModernMemoryIconStyle}"
+                                         HorizontalAlignment="Right"
+                                         VerticalAlignment="Top"
+                                         Margin="0,8,8,0"
+                                         Grid.RowSpan="2">
+                    <materialDesign:PopupBox.PopupContent>
+                        <Grid>
+                            <TextBlock Width="200"
+                                       TextWrapping="Wrap"
+                                       FontWeight="Normal"
+                                       Foreground="AliceBlue"
+                                       FontSize="12">
+ Monitor de RAM: Verifica la RAM y temperatura de su sistema en tiempo real
+ para identificar posibles problemas de calentamiento y rendimiento.
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:PopupBox.PopupContent>
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="Memory"
+                                                 Foreground="AliceBlue"
+                                                 Width="20"
+                                                 Height="20" />
+                    </materialDesign:PopupBox.ToggleContent>
+                </materialDesign:PopupBox>
+
+                <StackPanel Grid.Row="1"
+                            Margin="8,24,8,0">
+                    <TextBlock Name="txbTemp"
+                               HorizontalAlignment="Center"
+                               FontWeight="SemiBold"
+                               Foreground="AliceBlue"
+                               Margin="5" />
+                    <TextBlock Grid.Row="3"
+                               Foreground="AliceBlue"
+                               TextAlignment="Center"
+                               Name="txbRAM" />
+                </StackPanel>
+
+                <!-- Botones mejorados con diseño moderno -->
+                <StackPanel Grid.Row="2"
+                            Margin="12"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+
+                    <!-- Botón Alarma con efecto moderno -->
+                    <Button Click="Button_Alarma"
+                            Style="{StaticResource ModernActionButton}"
+                            Margin="4"
+                            ToolTip="Configurar Alarma">
+                        <materialDesign:PackIcon Kind="Bell"
+                                                 Width="16"
+                                                 Height="16" />
+                    </Button>
+
+                    <!-- Botón Plus con efecto moderno -->
+                    <Button Style="{StaticResource ModernActionButton}"
+                            Click="Button_Click_1"
+                            Margin="4"
+                            ToolTip="Agregar">
+                        <materialDesign:PackIcon Kind="PlusBox"
+                                                 Width="16"
+                                                 Height="16" />
+                    </Button>
+
+                    <!-- Botón Expandir con efecto moderno -->
+                    <Button Style="{StaticResource ModernActionButton}"
+                            Click="Button_Click"
+                            Margin="4"
+                            ToolTip="Expandir">
+                        <materialDesign:PackIcon Kind="TriangleDownOutline"
+                                                 Width="16"
+                                                 Height="16" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </StackPanel>
+</UserControl>

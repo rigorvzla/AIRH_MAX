@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="SystemMonitorControls.HDD.CircularMD"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SystemMonitorControls.HDD"
+             Loaded="UserControl_Loaded"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="gridTotal">
+        <StackPanel>
+            <TextBlock Name="txbTitulo" Margin="10"
+                   HorizontalAlignment="Center" />
+            <Button materialDesign:ButtonProgressAssist.IndicatorBackground="#FF767676"
+                    materialDesign:ButtonProgressAssist.IndicatorForeground="#FF493E39"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                    Name="btnMD"
+                    Click="btnMD_Click"
+                    Background="DimGray"
+                    BorderBrush="LightGray"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    Width="100"
+                    Height="100">
+                <Button.Content>
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold"
+                               FontSize="12"
+                               Name="txbHDDp">
+				<Run Text="{Binding ElementName=PB, Path=Value}" /><Run Text="%" />
+                    </TextBlock>
+                </Button.Content>
+            </Button>
+            <TextBlock Name="txbHDD" Margin="0,10,0,5" 
+                   HorizontalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</UserControl>

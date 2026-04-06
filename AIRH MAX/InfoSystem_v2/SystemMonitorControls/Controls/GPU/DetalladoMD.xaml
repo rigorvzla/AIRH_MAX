@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="SystemMonitorControls.GPU.DetalladoMD"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SystemMonitorControls.GPU"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel Name="gridTotal">
+        <TextBlock Text="GPU"
+                   Height="20"
+                   HorizontalAlignment="Center"
+                   Foreground="AliceBlue"
+                   Name="txbGPUTitulo"
+                   FontWeight="Bold" />
+        <materialDesign:Card Width="180"
+                             Margin="10">
+            <materialDesign:Card.Background>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#FF02010F"
+                                  Offset="0" />
+                    <GradientStop Color="#FF0F2F52"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </materialDesign:Card.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <materialDesign:Card Padding="5"
+                                         Margin="5"
+                                         Width="70"
+                                         Height="70"
+                                         Background="FloralWhite"
+                                         UniformCornerRadius="14">
+                        <Grid>
+                            <Button materialDesign:ButtonProgressAssist.IndicatorBackground="#ffcc80"
+                                    materialDesign:ButtonProgressAssist.IndicatorForeground="#e65100"
+                                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                                    Name="btnGPU"
+                                    Click="btnGPU_Click"
+                                    Background="#81d4fa"
+                                    BorderBrush="#81d4fa"
+                                    Foreground="#DD000000"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignFloatingActionButton}">
+                                <Button.Content>
+                                    <TextBlock HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontWeight="Bold"
+                                               FontSize="12"
+                                               Name="txbGPUP" />
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                    </materialDesign:Card>
+                </Grid>
+
+                <materialDesign:PopupBox PopupMode="MouseOver"
+                                         Focusable="False"
+                                         HorizontalAlignment="Right"
+                                         VerticalAlignment="Bottom"
+                                         Margin="0,0,0,55"
+                                         materialDesign:ElevationAssist.Elevation="Dp6"
+                                         PopupUniformCornerRadius="4"
+                                         PopupHorizontalOffset="0"
+                                         PopupVerticalOffset="0"
+                                         PlacementMode="BottomAndAlignCentres"
+                                         Grid.RowSpan="2">
+                    <materialDesign:PopupBox.PopupContent>
+                        <Grid>
+                            <TextBlock Width="200"
+                                       TextWrapping="Wrap"
+                                       Margin="10,0"
+                                       FontWeight="SemiBold">
+Monitor de RAM: Verifica la RAM y temperatura de su sistema en tiempo real
+para identificar posibles problemas de calentamiento y rendimiento.
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:PopupBox.PopupContent>
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="ExpansionCard"
+                                                 Foreground="AliceBlue"
+                                                 Margin="5"
+                                                 Width="25"
+                                                 Height="25" />
+                    </materialDesign:PopupBox.ToggleContent>
+                </materialDesign:PopupBox>
+
+                <StackPanel Grid.Row="1"
+                            Margin="8,24,8,0">
+                    <TextBlock Name="txbTemp"
+                               HorizontalAlignment="Center"
+                               FontWeight="SemiBold"
+                               Foreground="AliceBlue"
+                               Margin="5" />
+                    <TextBlock Grid.Row="3"
+                               Foreground="AliceBlue"
+                               TextAlignment="Center"
+                               Name="txbGPU" />
+                </StackPanel>
+                <StackPanel Grid.Row="2"
+                            Margin="8"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <Button Click="Button_Alarma"
+                            Margin="5,0"
+                            Height="30"
+                            Background="FloralWhite"
+                            Style="{StaticResource MaterialDesignPaperSecondaryButton}">
+                        <materialDesign:PackIcon Kind="Bell"
+                                                 Foreground="Black" />
+                    </Button>
+
+                    <Button Style="{StaticResource MaterialDesignPaperSecondaryButton}"
+                            Click="Button_Click_1"
+                            Background="FloralWhite"
+                            Height="30">
+                        <materialDesign:PackIcon Kind="PlusBox"
+                                                 Foreground="Black" />
+                    </Button>
+
+                    <Button  Style="{StaticResource MaterialDesignPaperSecondaryButton}"
+                             Click="Button_Click"
+                             Margin="5,0"
+                             Background="FloralWhite"
+                             Height="30">
+                        <materialDesign:PackIcon Kind="TriangleDownOutline"
+                                                 Foreground="Black" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </StackPanel>
+</UserControl>
