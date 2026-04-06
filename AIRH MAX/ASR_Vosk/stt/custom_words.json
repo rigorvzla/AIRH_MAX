@@ -1,0 +1,10 @@
+{
+  "description": "Lista de palabras personalizadas para reconocimiento de voz",
+  "last_updated": "2024-01-15T10:30:00",
+  "custom_words": [
+    "goku",
+    "chatgpt",
+    "picoro",
+    "escroll"
+  ]
+}
