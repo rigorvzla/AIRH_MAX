@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <SolidColorBrush Color="Transparent"
+                     x:Key="PrimaryColor" />
+    
+    <SolidColorBrush Color="Transparent"                     
+                     x:Key="SecondaryColor" />
+
+    <SolidColorBrush Color="Transparent"
+                     x:Key="PrimaryText" />
+    
+    <SolidColorBrush Color="Transparent"
+                     x:Key="SecondaryText" />
+
+    <SolidColorBrush Color="Transparent"
+                     x:Key="PrimaryAcsendText" />
+
+    <SolidColorBrush Color="Transparent"
+                     x:Key="SecondaryAcsendText" />
+
+    <SolidColorBrush Color="Transparent"
+                     x:Key="ColorProgress" />
+</ResourceDictionary>

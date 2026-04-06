@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="ListViewItem"
+           x:Key="ItemYouTube">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+
+                        <Ellipse Width="40"
+                                 Height="40"
+                                 Margin="10,0,0,-5">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImageSource}"
+                                            RenderOptions.BitmapScalingMode="Fant" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Nombre_IA}"
+                                               Foreground="Lime"
+                                               FontWeight="Regular"
+                                               FontSize="14"
+                                               VerticalAlignment="Center"
+                                               Margin="5,10,0,-5" />
+
+                                    <TextBlock Text="{Binding Mensaje}"
+                                               Foreground="AliceBlue"
+                                               FontWeight="UltraLight"
+                                               Margin="5"
+                                               Width="230"
+                                               TextWrapping="Wrap"
+                                               FontSize="13" />
+
+                                    <TextBlock Text="{Binding Tiempo}"
+                                               Foreground="#FF35FDE2"
+                                               FontWeight="Light"
+                                               FontSize="10"
+                                               Margin="7,0,0,0"
+                                               VerticalAlignment="Bottom"
+                                               Background="{x:Null}" />
+                                </StackPanel>
+                                <Image Width="50"
+                                       Height="50"
+                                       Margin="10,0,0,0"
+                                       Stretch="UniformToFill"
+                                       Source="{Binding ImageSourceDescarga}" />
+
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
