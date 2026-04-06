@@ -1,0 +1,546 @@
+﻿<UserControl x:Class="AIRH_MAX.ControlUsuario.Control_Agenda"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Height="600"
+             Width="700"
+             Loaded="Window_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Theme/ScrollBarModern.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Width="300">
+
+            <RadioButton ToolTip="Agenda"
+                         Width="30"
+                         Margin="10,0,0,0"
+                         Height="30"
+                         Foreground="{DynamicResource PrimaryText}"
+                         FontSize="15"
+                         Click="AgendaUI"
+                         Style="{StaticResource RadioButtomTheme}">
+                <materialDesign:PackIcon Kind="Calendar"
+                                         Width="23"
+                                         Height="25"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Foreground="{DynamicResource PrimaryText}" />
+            </RadioButton>
+
+
+            <RadioButton ToolTip="Contactos"
+                         Width="30"
+                         Margin="10,0,0,0"
+                         Height="30"
+                         Foreground="{DynamicResource PrimaryText}"
+                         FontSize="15"
+                         Click="ContactosUI"
+                         Style="{StaticResource RadioButtomTheme}">
+                <materialDesign:PackIcon Kind="Contact"
+                                         Width="23"
+                                         Height="25"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Foreground="{DynamicResource PrimaryText}" />
+            </RadioButton>
+
+
+        </StackPanel>
+
+        <Grid Grid.Column="1"
+              Grid.Row="1"
+              Name="GridAgenda"
+              Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Agenda"
+                       FontWeight="SemiBold"
+                       FontSize="16"
+                       Foreground="AliceBlue"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center" />
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            Grid.ColumnSpan="2">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Name="txtEvento"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 materialDesign:HintAssist.Hint="Evento"
+                                 Foreground="AliceBlue"
+                                 FontWeight="Medium"
+                                 Background="Transparent"
+                                 TextWrapping="Wrap"
+                                 SelectionBrush="CadetBlue" />
+
+                        <DatePicker Margin="5"
+                                    Grid.Column="1"
+                                    FontSize="13"
+                                    ForceCursor="True"
+                                    Cursor="Arrow"
+                                    Focusable="False"
+                                    FontWeight="SemiBold"
+                                    Foreground="SkyBlue"
+                                    BorderBrush="AliceBlue"
+                                    Language="es-es"
+                                    Name="CalGrande"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+
+                            <materialDesign:HintAssist.Hint>
+                                <TextBlock Text="Fecha"
+                                           Foreground="SkyBlue" />
+                            </materialDesign:HintAssist.Hint>
+
+                            <DatePicker.CalendarStyle>
+                                <Style TargetType="Calendar"
+                                       BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+
+                                    <!-- Cambiar colores del header y días de semana mediante recursos -->
+                                    <Style.Resources>
+                                        <!-- Color del mes/año y flechas -->
+                                        <SolidColorBrush x:Key="PrimaryHueLightBrush"
+                                                         Color="Black" />
+                                        <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush"
+                                                         Color="Black" />
+                                        <SolidColorBrush x:Key="PrimaryHueMidBrush"
+                                                         Color="Black" />
+                                        <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush"
+                                                         Color="Black" />
+                                        <SolidColorBrush x:Key="PrimaryHueDarkBrush"
+                                                         Color="Black" />
+                                        <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush"
+                                                         Color="Black" />
+
+                                        <!-- Color de los días de la semana -->
+                                        <SolidColorBrush x:Key="MaterialDesignBody"
+                                                         Color="Black" />
+                                        <SolidColorBrush x:Key="MaterialDesignText"
+                                                         Color="Black" />
+                                    </Style.Resources>
+
+                                    <!-- Personalizar el CalendarItem de forma simple -->
+                                    <Setter Property="CalendarItemStyle">
+                                        <Setter.Value>
+                                            <Style TargetType="CalendarItem"
+                                                   BasedOn="{StaticResource  MaterialDesignCalendarItemPortrait}">
+
+                                                <!-- Forzar color negro en todos los textos del header -->
+                                                <Setter Property="Foreground"
+                                                        Value="Black" />
+
+                                                <Style.Resources>
+                                                    <!-- Asegurar que los botones sean negros -->
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Foreground"
+                                                                Value="Black" />
+                                                        <Setter Property="Background"
+                                                                Value="Transparent" />
+                                                    </Style>
+
+                                                    <!-- Asegurar que los textos sean negros -->
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Foreground"
+                                                                Value="Black" />
+                                                    </Style>
+                                                </Style.Resources>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+
+                                    <!-- Tu estilo existente para los números de días -->
+                                    <Setter Property="CalendarDayButtonStyle">
+                                        <Setter.Value>
+                                            <Style TargetType="CalendarDayButton">
+                                                <!-- Heredamos todo del estilo por defecto de MaterialDesign -->
+                                                <Setter Property="FontSize"
+                                                        Value="13" />
+                                                <Setter Property="FontWeight"
+                                                        Value="Normal" />
+                                                <Setter Property="Width"
+                                                        Value="32" />
+                                                <Setter Property="Height"
+                                                        Value="32" />
+                                                <Setter Property="HorizontalContentAlignment"
+                                                        Value="Center" />
+                                                <Setter Property="VerticalContentAlignment"
+                                                        Value="Center" />
+
+                                                <!-- Nuestros colores personalizados -->
+                                                <Setter Property="Foreground"
+                                                        Value="Black" />
+
+                                                <Style.Triggers>
+                                                    <!-- Días fuera del mes -->
+                                                    <Trigger Property="IsInactive"
+                                                             Value="True">
+                                                        <Setter Property="Foreground"
+                                                                Value="Gray" />
+                                                    </Trigger>
+
+                                                    <!-- Día actual -->
+                                                    <Trigger Property="IsToday"
+                                                             Value="True">
+                                                        <Setter Property="Foreground"
+                                                                Value="SkyBlue" />
+                                                    </Trigger>
+
+                                                    <!-- MouseOver - Mantenemos comportamiento MaterialDesign -->
+                                                    <Trigger Property="IsMouseOver"
+                                                             Value="True">
+                                                        <Setter Property="Background"
+                                                                Value="{DynamicResource MaterialDesignSelection}" />
+                                                        <Setter Property="BorderBrush"
+                                                                Value="{DynamicResource MaterialDesignSelection}" />
+                                                    </Trigger>
+
+                                                    <!-- Selected - Mantenemos comportamiento MaterialDesign -->
+                                                    <Trigger Property="IsSelected"
+                                                             Value="True">
+                                                        <Setter Property="Background"
+                                                                Value="{DynamicResource MaterialDesignPrimaryBrush}" />
+                                                        <Setter Property="Foreground"
+                                                                Value="White" />
+                                                        <Setter Property="BorderBrush"
+                                                                Value="{DynamicResource MaterialDesignPrimaryBrush}" />
+                                                    </Trigger>
+
+                                                    <!-- Disabled -->
+                                                    <Trigger Property="IsEnabled"
+                                                             Value="False">
+                                                        <Setter Property="Foreground"
+                                                                Value="{DynamicResource MaterialDesignDisabledText}" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DatePicker.CalendarStyle>
+                        </DatePicker>
+
+                        <materialDesign:TimePicker Margin="5"
+                                                   Grid.Column="2"
+                                                   Focusable="False"
+                                                   FontSize="13"
+                                                   ForceCursor="True"
+                                                   Cursor="Arrow"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="SkyBlue"
+                                                   BorderBrush="AliceBlue"
+                                                   Name="TimePick02"
+                                                   materialDesign:HintAssist.Hint="Hora"
+                                                   Style="{StaticResource MaterialDesignFloatingHintTimePicker}" />
+
+                        <Menu materialDesign:MenuAssist.TopLevelMenuItemHeight="35"
+                              Margin="5"
+                              Grid.Column="4"
+                              HorizontalAlignment="Center">
+                            <MenuItem Icon="{materialDesign:PackIcon Kind=Menu, Size=20}"
+                                      Foreground="{DynamicResource PrimaryText}"
+                                      Background="{DynamicResource PrimaryColor}"
+                                      Width="50">
+                                <MenuItem Header="Apagar"
+                                          Foreground="{DynamicResource PrimaryText}"
+                                          IsCheckable="True"
+                                          Name="cbApagado"
+                                          Checked="cbApagarPC_Checked"
+                                          Icon="{materialDesign:PackIcon Kind=Power}" />
+                                <MenuItem Header="Reiniciar"
+                                          Foreground="{DynamicResource PrimaryText}"
+                                          IsCheckable="True"
+                                          Name="cbReinicio"
+                                          Checked="cbReiniciarPc_Checked"
+                                          Icon="{materialDesign:PackIcon Kind=Restart}" />
+                                <MenuItem Header="Suspender"
+                                          Foreground="{DynamicResource PrimaryText}"
+                                          IsCheckable="True"
+                                          Name="cbSuspension"
+                                          Checked="cbSuspender_Checked"
+                                          Icon="{materialDesign:PackIcon Kind=WeatherNight}" />
+                                <MenuItem Header="Cerrar Sesion"
+                                          Foreground="{DynamicResource PrimaryText}"
+                                          IsCheckable="True"
+                                          Name="cbSesion"
+                                          Checked="cbCerrarSesion_Checked"
+                                          Icon="{materialDesign:PackIcon Kind=ShieldAccount}" />
+                            </MenuItem>
+                        </Menu>
+                    </Grid>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox  Margin="5,0,5,0"
+                                  Grid.Column="0"
+                                  materialDesign:HintAssist.Hint="Recordatorio"
+                                  Foreground="AliceBlue"
+                                  Background="Transparent"
+                                  SelectionBrush="CadetBlue"
+                                  FontWeight="Medium"
+                                  TextWrapping="Wrap"
+                                  Name="txtRecordar" />
+
+                        <TextBox  Margin="5,0,5,0"
+                                  Grid.Column="1"
+                                  materialDesign:HintAssist.Hint="Ejecutar Archivo"
+                                  Foreground="AliceBlue"
+                                  Background="Transparent"
+                                  SelectionBrush="CadetBlue"
+                                  FontWeight="Medium"
+                                  TextWrapping="Wrap"
+                                  Name="TextBlockRuta" />
+
+                        <Button ToolTip="Buscar Archivo"
+                                Grid.Column="2"
+                                FontSize="15"
+                                Margin="5,0"
+                                Name="btnBuscar"
+                                Foreground="{DynamicResource PrimaryText}"
+                                Width="50"
+                                Height="35"
+                                Style="{StaticResource CustomButton}"
+                                Click="btnBuscar_Click"
+                                BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="FolderOpen"
+                                                     Width="23"
+                                                     Height="25"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="{DynamicResource PrimaryText}" />
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+
+
+
+            </Grid>
+            <Grid Grid.Row="2"
+                  VerticalAlignment="Center"
+                  Margin="10,5,5,0">
+            </Grid>
+            <Grid Grid.Row="3">
+                <DataGrid Name="listaFecha"
+                          Height="auto"
+                          SelectionMode="Single"
+                          Background="AliceBlue"
+                          Foreground="Black"
+                          CanUserReorderColumns="False"
+                          CanUserResizeColumns="False"
+                          CanUserSortColumns="True"
+                          IsReadOnly="True"
+                          HeadersVisibility="Column"
+                          CanUserResizeRows="False"
+                          Margin="10,5,5,5"
+                          BorderBrush="Black"
+                          MaxColumnWidth="170"
+                          MinColumnWidth="10">
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <RadioButton Width="280"
+                                 Height="30"
+                                 Click="btnGuardar_Click"
+                                 Foreground="AliceBlue"
+                                 ToolTip="Agregar Evento"
+                                 Style="{StaticResource RadioButtomTheme}">
+                        <materialDesign:PackIcon Kind="Plus"
+                                                 Width="23"
+                                                 Height="25"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="{DynamicResource PrimaryText}" />
+                    </RadioButton>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <RadioButton Width="280"
+                                 Height="30"
+                                 Foreground="AliceBlue"
+                                 Style="{StaticResource RadioButtomTheme}"
+                                 Click="btnBorrar_Click"
+                                 ToolTip="Eliminar Evento">
+                        <materialDesign:PackIcon Kind="Trash"
+                                                 Width="23"
+                                                 Height="25"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="{DynamicResource PrimaryText}" />
+                    </RadioButton>
+
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1"
+              Grid.Row="1"
+              Name="GridContactos"
+              Visibility="Hidden">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Contacto"
+                       FontWeight="SemiBold"
+                       FontSize="16"
+                       Foreground="AliceBlue"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center" />
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            VerticalAlignment="Center">
+                    <TextBox  Margin="5,0,5,0"
+                              materialDesign:HintAssist.Hint="Nombre"
+                              Foreground="AliceBlue"
+                              FontWeight="Medium"
+                              Background="Transparent"
+                              TextWrapping="Wrap"
+                              SelectionBrush="CadetBlue"
+                              Name="txtNombre01" />
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            VerticalAlignment="Center">
+                    <TextBox  Margin="5,0,5,0"
+                              materialDesign:HintAssist.Hint="Apellido"
+                              Foreground="AliceBlue"
+                              FontWeight="Medium"
+                              Background="Transparent"
+                              TextWrapping="Wrap"
+                              SelectionBrush="CadetBlue"
+                              Name="txtApellido01" />
+                </StackPanel>
+                <StackPanel Grid.Column="3"
+                            VerticalAlignment="Center">
+                    <TextBox  Margin="5,0,5,0"
+                              materialDesign:HintAssist.Hint="Teléfono"
+                              Foreground="AliceBlue"
+                              FontWeight="Medium"
+                              Background="Transparent"
+                              TextWrapping="Wrap"
+                              SelectionBrush="CadetBlue"
+                              Name="txtTelefono01" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <StackPanel>
+                    <DataGrid Name="lbContactos"
+                              Height="400"
+                              Background="AliceBlue"
+                              SelectionMode="Single"
+                              Foreground="Black"
+                              CanUserReorderColumns="False"
+                              CanUserResizeColumns="False"
+                              CanUserSortColumns="True"
+                              IsReadOnly="True"
+                              HeadersVisibility="Column"
+                              CanUserResizeRows="False"
+                              Margin="5,5,5,5"
+                              BorderBrush="Black"
+                              MaxColumnWidth="170"
+                              MinColumnWidth="10" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <RadioButton Width="280"
+                                 Height="30"
+                                 Click="btnAgregar_Click"
+                                 Foreground="AliceBlue"
+                                 ToolTip="Agregar Contacto"
+                                 Style="{StaticResource RadioButtomTheme}">
+                        <materialDesign:PackIcon Kind="Plus"
+                                                 Width="23"
+                                                 Height="25"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="{DynamicResource PrimaryText}" />
+                    </RadioButton>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <RadioButton Width="280"
+                                 Height="30"
+                                 Click="btnBorrar_Copy_Click"
+                                 Foreground="AliceBlue"
+                                 ToolTip="Eliminar Contacto"
+                                 Style="{StaticResource RadioButtomTheme}">
+                        <materialDesign:PackIcon Kind="Trash"
+                                                 Width="23"
+                                                 Height="25"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="{DynamicResource PrimaryText}" />
+                    </RadioButton>
+
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

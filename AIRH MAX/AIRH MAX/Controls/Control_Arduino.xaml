@@ -1,0 +1,243 @@
+﻿<UserControl x:Class="AIRH_MAX.ControlUsuario.Control_Arduino"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AIRH_MAX.ControlUsuario"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             Height="600"
+             Width="700"
+             Foreground="{DynamicResource PrimaryText}"
+             Background="Transparent"
+             Loaded="Window_Loaded"
+             Unloaded="UserControl_Unloaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Theme/ScrollBarModern.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="115" />
+                <ColumnDefinition Width="280" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <RadioButton Click="BtnRefresh_Click"
+                             ToolTip="Actualizar Puertos"
+                             Foreground="{DynamicResource SecondaryText}"
+                             BorderBrush="{DynamicResource SecondaryText}"
+                             Style="{StaticResource MaterialDesignOutlinedDarkButton }">
+                    <materialDesign:PackIcon Kind="ArrowRotateRight"
+                                             Width="23"
+                                             Height="25"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             Foreground="{DynamicResource PrimaryText}"
+                                             />
+                </RadioButton>
+
+
+            </Grid>
+
+            <StackPanel Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <ComboBox Width="85"
+                          Name="cb_ports"
+                          Foreground="{DynamicResource PrimaryText}"
+                          BorderBrush="{DynamicResource PrimaryText}"
+                          materialDesign:HintAssist.Hint="Puerto" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <ComboBox Width="85"
+                          Name="cbBaudRate"
+                          Foreground="{DynamicResource PrimaryText}"
+                          BorderBrush="{DynamicResource PrimaryText}"
+                          materialDesign:HintAssist.Hint="BaudRate" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <Button Content="Conectar"
+                        FontSize="13"
+                        Foreground="{DynamicResource SecondaryText}"
+                        BorderBrush="{DynamicResource SecondaryText}"
+                        Click="Btn_conect_Click"
+                        Style="{StaticResource MaterialDesignOutlinedDarkButton }"
+                        Name="Btn_conect" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="4"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <TextBox Name="TextBoxData"
+                         Margin="5"
+                         Width="240"
+                         materialDesign:HintAssist.Hint="Prueba de Datos"
+                         FontWeight="Medium"
+                         Foreground="{DynamicResource PrimaryText}"
+                         SelectionBrush="{DynamicResource SecondaryText}"
+                         BorderBrush="{DynamicResource PrimaryText}"
+                         Background="Transparent"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+
+            <Grid Grid.Column="5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <RadioButton Height="30"
+                             Width="30"
+                             Click="Btn_send_Data_Click"
+                             Foreground="{DynamicResource SecondaryText}"
+                             BorderBrush="{DynamicResource SecondaryText}"
+                             Name="Btn_send_Data"
+                             Style="{StaticResource RadioButtomTheme}"
+                             ToolTip="Enviar Dato">
+                    <materialDesign:PackIcon Kind="ShareCircle"
+                                             Width="23"
+                                             Height="25"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             Foreground="{DynamicResource PrimaryText}"
+                                             />
+                </RadioButton>
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid Name="dgDatos"
+                      SelectionChanged="dgDatos_SelectionChanged"
+                      Background="AliceBlue"
+                      Foreground="Black"
+                      CanUserReorderColumns="False"
+                      CanUserResizeColumns="False"
+                      CanUserSortColumns="True"
+                      IsReadOnly="True"
+                      HeadersVisibility="Column"
+                      CanUserResizeRows="False"
+                      Margin="10"
+                      BorderBrush="Black"
+                      MaxColumnWidth="220"
+                      MinColumnWidth="10" />
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="185" />
+                <ColumnDefinition Width="185" />
+                <ColumnDefinition Width="185" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <RadioButton Click="Btn_add_comandos_Click"
+                             Foreground="{DynamicResource SecondaryText}"
+                             BorderBrush="{DynamicResource SecondaryText}"
+                             ToolTip="Agregar Comando"
+                             Style="{StaticResource MaterialDesignOutlinedDarkButton }">
+                    <materialDesign:PackIcon Kind="Plus"
+                                             Width="23"
+                                             Height="25"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             Foreground="{DynamicResource PrimaryText}"
+                                             />
+                </RadioButton>
+
+
+            </Grid>
+
+            <Grid Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="Trash"
+                                         Width="23"
+                                         Height="25"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Foreground="{DynamicResource PrimaryText}" />
+                <RadioButton Click="btnBorrar_Click"
+                             Foreground="{DynamicResource SecondaryText}"
+                             BorderBrush="{DynamicResource SecondaryText}"
+                             ToolTip="Eliminar Comando"
+                             Style="{StaticResource MaterialDesignOutlinedDarkButton }">
+                    
+                </RadioButton>
+
+
+            </Grid>
+
+            <StackPanel Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBox Name="txt_comando"
+                         Width="170"
+                         Margin="5"
+                         materialDesign:HintAssist.Hint="Comando"
+                         Foreground="{DynamicResource PrimaryText}"
+                         SelectionBrush="{DynamicResource SecondaryText}"
+                         BorderBrush="{DynamicResource PrimaryText}"
+                         FontWeight="Medium"
+                         Background="Transparent"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBox Margin="5"
+                         Name="txt_accion"
+                         Width="170"
+                         materialDesign:HintAssist.Hint="Accion"
+                         Foreground="{DynamicResource PrimaryText}"
+                         SelectionBrush="{DynamicResource SecondaryText}"
+                         BorderBrush="{DynamicResource PrimaryText}"
+                         FontWeight="Medium"
+                         Background="Transparent"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="4"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBox Margin="5"
+                         Name="txt_respuesta"
+                         Width="170"
+                         materialDesign:HintAssist.Hint="Respuesta"
+                         Foreground="{DynamicResource PrimaryText}"
+                         SelectionBrush="{DynamicResource SecondaryText}"
+                         BorderBrush="{DynamicResource PrimaryText}"
+                         FontWeight="Medium"
+                         Background="Transparent"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

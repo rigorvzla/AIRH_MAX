@@ -1,0 +1,416 @@
+﻿<UserControl x:Class="AIRH_MAX.ControlUsuario.Control_Multimedia"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Foreground="{DynamicResource PrimaryText}"
+             Loaded="Window_Loaded"
+             Height="620"
+             Width="680"
+             Background="Transparent">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Estilo moderno para RadioButtons -->
+            <Style x:Key="ModernRadioButton"
+                   TargetType="RadioButton">
+                <Setter Property="Margin"
+                        Value="8" />
+                <Setter Property="Cursor"
+                        Value="Hand" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="BorderBrush"
+                        Value="#40FFFFFF" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="12"
+                                    Padding="15,12">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#20FFFFFF" />
+                                    <Setter Property="BorderBrush"
+                                            Value="#81d4fa" />
+                                </Trigger>
+                                <Trigger Property="IsChecked"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#3081d4fa" />
+                                    <Setter Property="BorderBrush"
+                                            Value="#81d4fa" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Estilo moderno para MaskedTextBox -->
+            <Style TargetType="xc:MaskedTextBox">
+                <Setter Property="FontSize"
+                        Value="16" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="BorderBrush"
+                        Value="#40FFFFFF" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Foreground"
+                        Value="AliceBlue" />
+                <Setter Property="CaretBrush"
+                        Value="#81d4fa" />
+                <Setter Property="TextAlignment"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0,5,0,10" />
+                <Setter Property="Padding"
+                        Value="10,8" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="xc:MaskedTextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="8">
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              Margin="{TemplateBinding Padding}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused"
+                                         Value="True">
+                                    <Setter Property="BorderBrush"
+                                            Value="#81d4fa" />
+                                    <Setter Property="BorderThickness"
+                                            Value="2" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#10FFFFFF" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Estilo moderno para ComboBox -->
+            <Style TargetType="ComboBox">
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="Margin"
+                        Value="0,10,0,0" />
+                <Setter Property="Foreground"
+                        Value="AliceBlue" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="BorderBrush"
+                        Value="#40FFFFFF" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Padding"
+                        Value="10,8" />
+                <Setter Property="Height"
+                        Value="45" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ComboBox">
+                            <Grid>
+                                <Border x:Name="Border"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="8">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock x:Name="HintText"
+                                                   Text="{TemplateBinding materialDesign:HintAssist.Hint}"
+                                                   Foreground="#60FFFFFF"
+                                                   VerticalAlignment="Center"
+                                                   Margin="10,0,0,0"
+                                                   IsHitTestVisible="False"
+                                                   Visibility="Collapsed" />
+                                        <ContentPresenter x:Name="ContentSite"
+                                                          Grid.Column="0"
+                                                          Content="{TemplateBinding SelectionBoxItem}"
+                                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                          VerticalAlignment="Center"
+                                                          Margin="10,0,0,0" />
+                                        <ToggleButton x:Name="ToggleButton"
+                                                      Grid.Column="1"
+                                                      Focusable="False"
+                                                      IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                      Background="Transparent"
+                                                      BorderBrush="Transparent"
+                                                      Width="30">
+                                            <materialDesign:PackIcon Kind="MenuDown"
+                                                                     Foreground="AliceBlue"
+                                                                     Width="16"
+                                                                     Height="16" />
+                                        </ToggleButton>
+                                    </Grid>
+                                </Border>
+                                <Popup x:Name="Popup"
+                                       Placement="Bottom"
+                                       IsOpen="{TemplateBinding IsDropDownOpen}"
+                                       AllowsTransparency="True"
+                                       Focusable="False"
+                                       PopupAnimation="Fade">
+                                    <Border Background="#1A2A3A"
+                                            BorderBrush="#81d4fa"
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            Margin="0,2,0,0">
+                                        <ScrollViewer MaxHeight="200">
+                                            <ItemsPresenter />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused"
+                                         Value="True">
+                                    <Setter TargetName="Border"
+                                            Property="BorderBrush"
+                                            Value="#81d4fa" />
+                                    <Setter TargetName="Border"
+                                            Property="BorderThickness"
+                                            Value="2" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter TargetName="Border"
+                                            Property="Background"
+                                            Value="#10FFFFFF" />
+                                </Trigger>
+                                <Trigger Property="HasItems"
+                                         Value="True">
+                                    <Setter TargetName="HintText"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="HasItems"
+                                         Value="False">
+                                    <Setter TargetName="HintText"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Estilo para el separador -->
+            <Style TargetType="Separator">
+                <Setter Property="Height"
+                        Value="2" />
+                <Setter Property="Margin"
+                        Value="5,8,5,0" />
+                <Setter Property="Background"
+                        Value="#30FFFFFF" />
+            </Style>
+
+            <!-- Estilo moderno para TextBlock de etiqueta -->
+            <Style x:Key="LabelStyle"
+                   TargetType="TextBlock">
+                <Setter Property="FontWeight"
+                        Value="SemiBold" />
+                <Setter Property="Foreground"
+                        Value="#80FFFFFF" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="Margin"
+                        Value="0,0,0,5" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border CornerRadius="15"
+            Background="#10FFFFFF"
+            Padding="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Título del control -->
+            <Border Grid.Row="0"
+                    Background="#20FFFFFF"
+                    CornerRadius="10"
+                    Padding="12,8"
+                    Margin="0,0,0,15">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Kind="FilmStrip"
+                                             Foreground="#81d4fa"
+                                             Width="20"
+                                             Height="20" />
+                    <TextBlock Text=" Editor Multimedia"
+                               Foreground="AliceBlue"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Margin="8,0,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- Panel de opciones: Crear GIF y Cortar Video -->
+            <Grid Grid.Row="1"
+                  Margin="0,0,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Botón Crear GIF -->
+                <RadioButton Grid.Column="0"
+                             Style="{StaticResource ModernRadioButton}"
+                             Click="btnGifCrear_Click"
+                             ToolTip="Seleccionar archivo e iniciar">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="FileImage"
+                                                 Width="28"
+                                                 Height="28"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="AliceBlue" />
+                        <TextBlock Text="Crear GIF"
+                                   FontWeight="SemiBold"
+                                   Foreground="AliceBlue"
+                                   FontSize="13"
+                                   TextAlignment="Center"
+                                   Margin="0,5,0,0" />
+                        <Separator Margin="0,5,0,0" />
+                        <TextBlock Text="Crea animaciones GIF"
+                                   Foreground="#80FFFFFF"
+                                   FontSize="9"
+                                   TextAlignment="Center"
+                                   Margin="0,3,0,0" />
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Botón Cortar Video -->
+                <RadioButton Grid.Column="1"
+                             Style="{StaticResource ModernRadioButton}"
+                             Click="btnCortarMultimedia_Click"
+                             ToolTip="Seleccionar archivo e iniciar">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="FilmEdit"
+                                                 Width="28"
+                                                 Height="28"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="AliceBlue" />
+                        <TextBlock Text="Cortar Video"
+                                   FontWeight="SemiBold"
+                                   Foreground="AliceBlue"
+                                   FontSize="13"
+                                   TextAlignment="Center"
+                                   Margin="0,5,0,0" />
+                        <Separator Margin="0,5,0,0" />
+                        <TextBlock Text="Recorta segmentos de video"
+                                   Foreground="#80FFFFFF"
+                                   FontSize="9"
+                                   TextAlignment="Center"
+                                   Margin="0,3,0,0" />
+                    </StackPanel>
+                </RadioButton>
+            </Grid>
+
+            <!-- Panel de configuración -->
+            <Border Grid.Row="2"
+                    Background="#10FFFFFF"
+                    CornerRadius="12"
+                    Padding="15"
+                    Margin="0,0,0,15">
+                <StackPanel>
+
+                    <!-- Campo Inicio -->
+                    <TextBlock Text="⏵ Iniciar (hh:mm:ss)"
+                               Style="{StaticResource LabelStyle}" />
+                    <xc:MaskedTextBox Name="MascaraI"
+                                      Mask="00:00:00"
+                                      Text="000000"
+                                      FontSize="16" />
+
+                    <!-- Campo Término -->
+                    <TextBlock Text="⏸ Terminar (hh:mm:ss)"
+                               Style="{StaticResource LabelStyle}"
+                               Margin="0,10,0,0" />
+                    <xc:MaskedTextBox Name="MascaraF"
+                                      Mask="00:00:00"
+                                      Text="000000"
+                                      FontSize="16" />
+
+                    <!-- Campo Resolución -->
+                    <TextBlock Text="📐 Resolución de salida"
+                               Style="{StaticResource LabelStyle}"
+                               Margin="0,10,0,0" />
+                    <ComboBox Name="CbResolucion"
+                              SelectedIndex="3"
+                              materialDesign:HintAssist.Hint="Selecciona resolución">
+                        <ListBoxItem Content="81x60" />
+                        <ListBoxItem Content="162x120" />
+                        <ListBoxItem Content="324x240" />
+                        <ListBoxItem Content="640x480" />
+                        <ListBoxItem Content="800x600" />
+                        <ListBoxItem Content="1024x768" />
+                        <ListBoxItem Content="1280x720" />
+                        <ListBoxItem Content="1366x768" />
+                        <ListBoxItem Content="1600x900" />
+                        <ListBoxItem Content="1920x1080" />
+                        <ListBoxItem Content="2560x1440" />
+                        <ListBoxItem Content="3840x2160" />
+                    </ComboBox>
+                </StackPanel>
+            </Border>
+
+            <!-- Barra de progreso -->
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Progreso de procesamiento"
+                           Foreground="#80FFFFFF"
+                           FontSize="10"
+                           FontWeight="Regular"
+                           Margin="0,0,0,5"
+                           HorizontalAlignment="Left" />
+
+                <ProgressBar Grid.Row="1"
+                             Name="progressBar"
+                             Height="6"
+                             Foreground="#81d4fa"
+                             Background="#20FFFFFF"
+                             BorderThickness="0" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

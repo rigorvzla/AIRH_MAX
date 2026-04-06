@@ -1,0 +1,283 @@
+﻿<UserControl x:Class="AIRH_MAX.ControlUsuario.Control_Comandos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             Height="600"
+             Width="700"
+             Foreground="{DynamicResource PrimaryText}"
+             Background="Transparent"
+             Loaded="Window_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Theme/ScrollBarModern.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Reemplazo: WrapPanel de RadioButtons por ComboBox -->
+        <Grid Grid.Row="0"
+              Margin="10,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+            <ComboBox Grid.Column="0"
+                      Height="35"
+                      VerticalContentAlignment="Stretch"
+                      materialDesign:HintAssist.Hint="Tipo de Comando"
+                      Foreground="{DynamicResource PrimaryText}"
+                      Padding="5,0,0,0">
+                <ComboBoxItem Content="🌐 Sociales"
+                              Tag="Sociales"
+                              Selected="ComboBoxItem_Selected" />
+                <ComboBoxItem Content="📁 Carpetas"
+                              Tag="Carpetas"
+                              Selected="ComboBoxItem_Selected" />
+                <ComboBoxItem Content="📱 Aplicaciones"
+                              Tag="Aplicaciones"
+                              Selected="ComboBoxItem_Selected" />
+                <ComboBoxItem Content="🌍 Página Web"
+                              Tag="PaginaWeb"
+                              Selected="ComboBoxItem_Selected" />
+                <ComboBoxItem Content="📝 Textos"
+                              Tag="Textos"
+                              Selected="ComboBoxItem_Selected" />
+                <ComboBoxItem Content="💬 Discord"
+                              Tag="Discord"
+                              Selected="ComboBoxItem_Selected" />
+            </ComboBox>
+            <Button Content="📚 Manual"
+                    Tag="Manual"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand"
+                    Style="{StaticResource CustomButton}"
+                    Click="btnInternos_Click"
+                    Grid.Column="1" />
+        </Grid>
+
+        <UserControl Name="userArduino"
+                     Grid.Row="1"
+                     Grid.RowSpan="3" />
+
+        <Grid Grid.Row="1">
+            <DataGrid Name="dgComandos"
+                      SelectionChanged="DgComandos_SelectionChanged"
+                      SelectionMode="Single"
+                      Background="AliceBlue"
+                      Foreground="Black"
+                      CanUserReorderColumns="False"
+                      CanUserResizeColumns="False"
+                      CanUserSortColumns="True"
+                      IsReadOnly="True"
+                      HeadersVisibility="Column"
+                      CanUserResizeRows="False"
+                      Margin="10,5,10,5"
+                      BorderBrush="Black"
+                      MaxColumnWidth="220"
+                      MinColumnWidth="10" />
+        </Grid>
+
+        <!-- Panel de entrada estilo minimalista (Alternativa 5) -->
+        <Grid Grid.Row="2"
+              Margin="10,5">
+            <Border CornerRadius="8"
+                    Padding="0">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="45" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Fila 1: Comando y Respuesta -->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Name="tbCmd"
+                                 Grid.Column="0"
+                                 Margin="10,0"
+                                 materialDesign:HintAssist.Hint="Comando"
+                                 materialDesign:HintAssist.Foreground="{DynamicResource SecondaryText}"
+                                 Foreground="{DynamicResource PrimaryText}"
+                                 BorderThickness="0"
+                                 VerticalAlignment="Center"
+                                 FontWeight="Medium"
+                                 TextWrapping="Wrap"
+                                 SelectionBrush="{DynamicResource SecondaryText}" />
+
+                        <TextBlock Grid.Column="1"
+                                   Text="→"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource PrimaryText}"
+                                   FontSize="16"
+                                   FontWeight="Bold" />
+
+                        <TextBox Name="tbRespuesta"
+                                 Grid.Column="2"
+                                 Margin="10,0"
+                                 materialDesign:HintAssist.Hint="Respuesta"
+                                 materialDesign:HintAssist.Foreground="{DynamicResource SecondaryText}"
+                                 Foreground="{DynamicResource PrimaryText}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 VerticalAlignment="Center"
+                                 FontWeight="Medium"
+                                 TextWrapping="Wrap"
+                                 SelectionBrush="{DynamicResource SecondaryText}" />
+                    </Grid>
+
+                    <!-- Separador -->
+                    <Rectangle Grid.Row="1"
+                               Fill="{DynamicResource SecondaryText}"
+                               Opacity="0.2"
+                               Height="1" />
+
+                    <!-- Fila 2: Ruta con botón de búsqueda integrado -->
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="45" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Name="tbRuta"
+                                 Grid.Column="0"
+                                 Margin="10,0"
+                                 materialDesign:HintAssist.Hint="Acción o ruta del archivo"
+                                 materialDesign:HintAssist.Foreground="{DynamicResource SecondaryText}"
+                                 Foreground="{DynamicResource PrimaryText}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 VerticalAlignment="Center"
+                                 FontWeight="Medium"
+                                 TextWrapping="Wrap"
+                                 SelectionBrush="{DynamicResource SecondaryText}" />
+
+                        <Button Grid.Column="1"
+                                ToolTip="Buscar Elemento"
+                                Style="{StaticResource CustomButton}"
+                                Click="btnBuscarArchivo_Click"
+                                Background="Transparent"
+                                Width="35"
+                                Height="35"
+                                Margin="0,0,5,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="FolderOpen"
+                                                     Width="20"
+                                                     Height="20"
+                                                     Foreground="{DynamicResource PrimaryText}" />
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Botones de acción mejorados con estilo minimalista -->
+        <Grid Grid.Row="3"
+              Margin="10,5">
+            <Border CornerRadius="8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Botón Agregar -->
+                    <Button Grid.Column="0"
+                            Height="30"
+                            Margin="5"
+                            Click="btn_AgregarCmd_Click"
+                            ToolTip="Agregar Comando"
+                            Style="{StaticResource CustomButton}"
+                            Background="Transparent"
+                            BorderBrush="{DynamicResource SecondaryText}"
+                            BorderThickness="1">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Plus"
+                                                     Width="18"
+                                                     Height="18"
+                                                     Margin="0,0,5,0"
+                                                     Foreground="{DynamicResource PrimaryText}" />
+                            <TextBlock Text="Agregar"
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryText}"
+                                       FontSize="12"
+                                       FontWeight="Medium" />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Botón Modificar -->
+                    <Button Grid.Column="1"
+                            Height="30"
+                            Margin="5"
+                            Click="BtnModificar"
+                            ToolTip="Modificar Comando"
+                            Style="{StaticResource CustomButton}"
+                            Background="Transparent"
+                            BorderBrush="{DynamicResource SecondaryText}"
+                            BorderThickness="1">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Pencil"
+                                                     Width="18"
+                                                     Height="18"
+                                                     Margin="0,0,5,0"
+                                                     Foreground="{DynamicResource PrimaryText}" />
+                            <TextBlock Text="Modificar"
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryText}"
+                                       FontSize="12"
+                                       FontWeight="Medium" />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Botón Eliminar -->
+                    <Button Grid.Column="2"
+                            Height="30"
+                            Margin="5"
+                            Click="btnClear_Click"
+                            ToolTip="Eliminar Comando"
+                            Style="{StaticResource CustomButton}"
+                            Background="Transparent"
+                            BorderBrush="{DynamicResource SecondaryText}"
+                            BorderThickness="1">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Trash"
+                                                     Width="18"
+                                                     Height="18"
+                                                     Margin="0,0,5,0"
+                                                     Foreground="{DynamicResource PrimaryText}" />
+                            <TextBlock Text="Eliminar"
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryText}"
+                                       FontSize="12"
+                                       FontWeight="Medium" />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Controls\Banner\BannerMain.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Control_Arduino.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Control_CE.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Control_Comandos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Control_Comentario.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Control_Config.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Control_FileMonitor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Control_Fix.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Control_Gamer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Popups\ChatClient.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Popups\Splash.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Popups\WizardStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\Control_Agenda.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Control_CE.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Control_Comandos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Control_Config.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Control_FileMonitor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Control_Fix.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Control_Gamer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Control_MenuVideos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Control_Multimedia.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Popups\AvisoActivado.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Popups\ClickerPosition.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Popups\FileOrganizer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Popups\Splash.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Popups\WizardStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\ColorGlobal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\Images.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\ItemView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\MessageBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\RadioButtomTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\ScrollBarModern.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,271 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows8.0</TargetFramework>
+		<RootNamespace>AIRH_MAX</RootNamespace>
+		<Nullable>warnings</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<Platforms>x64</Platforms>
+		<UseWindowsForms>True</UseWindowsForms>
+		<ApplicationIcon>AIRH.ico</ApplicationIcon>
+		<SatelliteResourceLanguages>es</SatelliteResourceLanguages>
+		<PackageProjectUrl>https://av-airh.com/</PackageProjectUrl>
+		<Version>7.1.0.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="App.config" />
+		<None Remove="PNG\AIRH.png" />
+		<None Remove="PNG\AIRH_NAV.png" />
+		<None Remove="PNG\local.png" />
+		<None Remove="PNG\user.png" />
+		<None Remove="Sonidos\pop.mp3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<COMReference Include="Shell32">
+			<WrapperTool>tlbimp</WrapperTool>
+			<VersionMinor>0</VersionMinor>
+			<VersionMajor>1</VersionMajor>
+			<Guid>50a7e9b0-70ef-11d1-b75a-00a0c90564fe</Guid>
+			<Lcid>0</Lcid>
+			<Isolated>false</Isolated>
+			<EmbedInteropTypes>true</EmbedInteropTypes>
+		</COMReference>
+		<COMReference Include="SHDocVw">
+			<WrapperTool>tlbimp</WrapperTool>
+			<VersionMinor>1</VersionMinor>
+			<VersionMajor>1</VersionMajor>
+			<Guid>eab22ac0-30c1-11cf-a7eb-0000c05bae0b</Guid>
+			<Lcid>0</Lcid>
+			<Isolated>false</Isolated>
+			<EmbedInteropTypes>true</EmbedInteropTypes>
+		</COMReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="AIRH.ico">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Sonidos\pop.mp3">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="App.config">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BasicAudio" Version="2023.11.15.1" />
+		<PackageReference Include="Discord.Net.Webhook" Version="3.18.0" />
+		<PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
+		<PackageReference Include="FFMpegCore" Version="5.4.0" />
+		<PackageReference Include="FlashCap" Version="1.11.0" />
+		<PackageReference Include="Humanizer.Core.es" Version="3.0.10" />
+		<PackageReference Include="libphonenumber-csharp" Version="9.0.26" />
+		<PackageReference Include="Magick.NET-Q16-AnyCPU" Version="14.11.1" />
+		<PackageReference Include="MailKit" Version="4.15.1" />
+		<PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
+		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
+		<PackageReference Include="NetPace.Core" Version="0.20.0" />
+		<PackageReference Include="Obfuscar" Version="2.2.50">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="PuppeteerSharp" Version="24.40.0" />
+		<PackageReference Include="SharpSevenZip" Version="2.0.32" />
+		<PackageReference Include="System.IO.Ports" Version="10.0.0" />
+		<PackageReference Include="System.Management" Version="10.0.0">
+			<TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
+		<PackageReference Include="System.Speech" Version="10.0.5" />
+		<PackageReference Include="Telegram.Bot" Version="22.7.5" />
+		<PackageReference Include="YoutubeExplode" Version="6.5.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ASR_Vosk\Vosk_STT.csproj" />
+		<ProjectReference Include="..\ErrorReportingNET\ErrorReportingNET.csproj" />
+		<ProjectReference Include="..\InfoSystem_v2\SystemMonitorControls\SystemMonitorControls.csproj" />
+		<ProjectReference Include="..\LLM_ServerMain\LLM_ServerMain.csproj" />
+		<ProjectReference Include="..\MAX\MAX.csproj" />
+		<ProjectReference Include="..\PiperSharp\PiperSharp.csproj" />
+		<ProjectReference Include="..\VerifyLi\VerifyLi.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="System.Management">
+			<HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Management.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="PNG\AIRH_2.png" />
+		<Resource Include="PNG\AIRH.png" />
+		<Resource Include="PNG\AIRH_NAV.png" />
+		<Resource Include="PNG\local.png">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="PNG\user.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ConvertMediaPack.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Views\IPClean.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Views\MedirVelocidad.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Views\ScanDisk.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Views\SevenPack.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Views\YouTubePack.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Addons\Apps\NetWatcher.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Addons\Apps\TranslateGG.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Addons\Apps\WhatsSend.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="AIRH.db">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Manual.pdf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="redist\aspnetcore-runtime-8.0.18-win-x64.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="redist\VISUAL C++ 2015 - 2022 RUNTIME.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="redist\windowsdesktop-runtime-8.0.18-win-x64.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\Microsoft.Extensions.Diagnostics.Abstractions.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\Microsoft.Extensions.Hosting.Abstractions.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\Microsoft.Extensions.Logging.Abstractions.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\Microsoft.Extensions.ObjectPool.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\Microsoft.Extensions.Options.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\Newtonsoft.Json.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\System.Net.WebSockets.WebSocketProtocol.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\VoskSignalRServer.deps.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\VoskSignalRServer.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\VoskSignalRServer.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\VoskSignalRServer.runtimeconfig.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Signal\VoskSignalRServer.staticwebassets.endpoints.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Sonidos\click-double.mp3">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Sonidos\shot.mp3">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Sonidos\single-click.mp3">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Sonidos\start.mp3">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="x64\ffmpeg.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="x64\ffplay.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="x64\ffprobe.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<Target Name="RemoveSpecificRuntimes" AfterTargets="Build">
+		<ItemGroup>
+			<UnwantedRuntimes Include="&#xD;&#xA;      $(OutputPath)runtimes\android-arm;&#xD;&#xA;      $(OutputPath)runtimes\android-arm64;&#xD;&#xA;      $(OutputPath)runtimes\android-x64;&#xD;&#xA;      $(OutputPath)runtimes\android-x86;&#xD;&#xA;      $(OutputPath)runtimes\browser;&#xD;&#xA;      $(OutputPath)runtimes\browser-wasm;&#xD;&#xA;      $(OutputPath)runtimes\linux-arm;&#xD;&#xA;      $(OutputPath)runtimes\linux-arm64;&#xD;&#xA;      $(OutputPath)runtimes\linux-armel;&#xD;&#xA;      $(OutputPath)runtimes\linux-bionic-arm64;&#xD;&#xA;      $(OutputPath)runtimes\linux-bionic-x64;&#xD;&#xA;      $(OutputPath)runtimes\linux-mips64;&#xD;&#xA;      $(OutputPath)runtimes\linux-musl-arm;&#xD;&#xA;      $(OutputPath)runtimes\linux-musl-arm64;&#xD;&#xA;      $(OutputPath)runtimes\linux-musl-s390x;&#xD;&#xA;      $(OutputPath)runtimes\linux-musl-x64;&#xD;&#xA;      $(OutputPath)runtimes\linux-ppc64le;&#xD;&#xA;      $(OutputPath)runtimes\linux-s390x;&#xD;&#xA;      $(OutputPath)runtimes\linux-x64;&#xD;&#xA;      $(OutputPath)runtimes\linux-x86;&#xD;&#xA;      $(OutputPath)runtimes\maccatalyst-arm64;&#xD;&#xA;      $(OutputPath)runtimes\maccatalyst-x64;&#xD;&#xA;      $(OutputPath)runtimes\osx;&#xD;&#xA;      $(OutputPath)runtimes\osx-arm64;&#xD;&#xA;      $(OutputPath)runtimes\osx-x64;&#xD;&#xA;      $(OutputPath)runtimes\unix" />
+		</ItemGroup>
+		<RemoveDir Directories="@(UnwantedRuntimes)" />
+	</Target>
+
+	<Target Name="Obfuscate" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' And '$(Platform)' == 'x64'">
+		<Message Text="🔄 Ejecutando ofuscación con Obfuscar.Console.exe..." Importance="high" />
+
+		<!-- ✅ Verificar que existan TODOS los archivos que se van a ofuscar -->
+		<Error Condition="!Exists('$(OutDir)AIRH MAX.dll')" Text="❌ AIRH MAX.dll no encontrado en $(OutDir)" />
+		<Error Condition="!Exists('$(OutDir)LLM_ServerMain.dll')" Text="❌ LLM_ServerMain.dll no encontrado en $(OutDir)" />
+		<Error Condition="!Exists('$(OutDir)ErrorReportingNET.dll')" Text="❌ ErrorReportingNET.dll no encontrado en $(OutDir)" />
+		<Error Condition="!Exists('$(OutDir)InfoSystem_v2.dll')" Text="❌ InfoSystem_v2.dll no encontrado en $(OutDir)" />
+		<Error Condition="!Exists('$(OutDir)PiperSharp.dll')" Text="❌ PiperSharp.dll no encontrado en $(OutDir)" />
+		<Error Condition="!Exists('$(OutDir)MAX.dll')" Text="❌ MAX.dll no encontrado en $(OutDir)" />
+		<Error Condition="!Exists('$(OutDir)Vosk_STT.dll')" Text="❌ Vosk_STT.dll no encontrado en $(OutDir)" />
+
+		<!-- ✅ Ejecutar Obfuscar -->
+		<Exec Command="&quot;$(USERPROFILE)\.nuget\packages\obfuscar\2.2.49\tools\Obfuscar.Console.exe&quot; obfuscar.xml" WorkingDirectory="$(ProjectDir)" />
+
+		<!-- ✅ Copiar DLLs ofuscadas de vuelta -->
+		<ItemGroup>
+			<ObfuscatedFiles Include="$(OutDir)obfuscated\*.dll" />
+		</ItemGroup>
+		<Copy SourceFiles="@(ObfuscatedFiles)" DestinationFolder="$(OutDir)" OverwriteReadOnlyFiles="true" />
+
+		<!-- ✅ Limpiar carpeta temporal -->
+		<RemoveDir Directories="$(OutDir)obfuscated\" />
+
+		<Message Text="✅ DLLs ofuscadas copiadas a: $(OutDir)" Importance="high" />
+	</Target>
+</Project>

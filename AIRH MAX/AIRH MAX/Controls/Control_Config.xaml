@@ -1,0 +1,936 @@
+﻿<UserControl x:Class="AIRH_MAX.ControlUsuario.Control_Config"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
+             Height="600"
+             Width="700"
+             Background="{DynamicResource PrimaryColor}"
+             Foreground="{DynamicResource PrimaryText}"
+             Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TabControl Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                    TabStripPlacement="Right"
+                    Background="{DynamicResource PrimaryColor}"
+                    materialDesign:ColorZoneAssist.Mode="Standard"
+                    materialDesign:ElevationAssist.Elevation="Dp4">
+            <TabItem ToolTip="General"
+                     Foreground="{DynamicResource PrimaryText}">
+                <TabItem.Header>
+                    <StackPanel Width="auto"
+                                Height="auto">
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 Foreground="{DynamicResource PrimaryText}"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="Gear" />
+                    </StackPanel>
+                </TabItem.Header>
+                <StackPanel HorizontalAlignment="Left"
+                            Margin="5">
+                    <TextBox Name="txtNombreUsuario"
+                             PreviewTextInput="TxtNombreUsuario_PreviewTextInput"
+                             Width="600"
+                             Margin="5,0,5,0"
+                             materialDesign:HintAssist.Hint="Nombre de Usuario"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             FontWeight="Medium"
+                             TextWrapping="Wrap"
+                             BorderThickness="0,0,0,1"
+                             Foreground="{DynamicResource PrimaryText}"
+                             SelectionBrush="{DynamicResource SecondaryText}"
+                             BorderBrush="{DynamicResource PrimaryText}" />
+
+                    <TextBox Width="600"
+                             Name="txtNombreAsistente"
+                             FontWeight="Medium"
+                             Margin="5,5,5,0"
+                             Foreground="{DynamicResource PrimaryText}"
+                             VerticalAlignment="Center"
+                             materialDesign:HintAssist.Hint="Activar Asistente"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             PreviewTextInput="txtNombreAsistente_PreviewTextInput"
+                             TextWrapping="Wrap"
+                             BorderThickness="0,0,0,1"
+                             SelectionBrush="{DynamicResource SecondaryText}"
+                             BorderBrush="{DynamicResource PrimaryText}" />
+
+                    <TextBox Width="600"
+                             Margin="5,5,5,0"
+                             Name="txtAdiosAsistente"
+                             PreviewTextInput="txtAdiosAsistente_PreviewTextInput"
+                             FontWeight="Medium"
+                             VerticalAlignment="Center"
+                             materialDesign:HintAssist.Hint="Desactivar Asistente"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             TextWrapping="Wrap"
+                             BorderThickness="0,0,0,1"
+                             Foreground="{DynamicResource PrimaryText}"
+                             SelectionBrush="{DynamicResource SecondaryText}"
+                             BorderBrush="{DynamicResource PrimaryText}" />
+
+                    <ComboBox Name="vozAsistente"
+                              Margin="0,5"
+                              Width="600"
+                              Foreground="{DynamicResource PrimaryText}"
+                              BorderBrush="{DynamicResource PrimaryText}"
+                              materialDesign:HintAssist.Hint="Voz del Asistente"
+                              DropDownClosed="vozAsistente_DropDownClosed" />
+
+                    <ComboBox Name="micAsistente"
+                              Margin="0,5"
+                              Width="600"
+                              Foreground="{DynamicResource PrimaryText}"
+                              BorderBrush="{DynamicResource PrimaryText}"
+                              materialDesign:HintAssist.Hint="Micrófono"
+                              SelectionChanged="micAsistente_SelectionChanged" />
+
+                    <TextBox Name="micAsistente2"
+                             Margin="0,5"
+                             IsReadOnly="True"
+                             Focusable="False"
+                             Width="600"
+                             Cursor="Arrow"
+                             ToolTip="Entrada de audio digital"
+                             Foreground="{DynamicResource PrimaryText}"
+                             BorderBrush="{DynamicResource PrimaryText}"
+                             materialDesign:HintAssist.Hint="Entrada de Audio" />
+
+                    <StackPanel Grid.Column="1"
+                                Margin="5,0,5,0">
+
+                        <ComboBox Name="cbLenguaje"
+                                  Width="600"
+                                  SelectedIndex="0"
+                                  Foreground="{DynamicResource PrimaryText}"
+                                  BorderBrush="{DynamicResource PrimaryText}"
+                                  materialDesign:HintAssist.Hint="Idioma"
+                                  DropDownClosed="cbLenguaje_DropDownClosed">
+                            <ComboBoxItem Content="Español" />
+                        </ComboBox>
+
+                        <StackPanel Margin="0,10"
+                                    Visibility="Collapsed"
+                                    ToolTip="Cambia dinámicamente el tiempo de silencio que marca el fin de voz.">
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Foreground="Gray"
+                                           FontWeight="Medium"
+                                           Background="Transparent"
+                                           TextWrapping="Wrap"
+                                           Text="Tiempo de Habla" />
+                                <TextBlock Foreground="Gray"
+                                           FontWeight="Medium"
+                                           Background="Transparent"
+                                           Name="txtEndSilenceDisplay"
+                                           Text="Tiempo de Habla" />
+                            </StackPanel>
+
+                            <Slider SelectionEnd="2000"
+                                    SelectionStart="1000"
+                                    IsSelectionRangeEnabled="True"
+                                    IsSnapToTickEnabled="True"
+                                    Name="sldCon"
+                                    ValueChanged="sldCon_ValueChanged"
+                                    SmallChange="50"
+                                    LargeChange="100"
+                                    TickFrequency="100"
+                                    Value="1500"
+                                    Minimum="500"
+                                    Maximum="5000" />
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <Grid Margin="0,20">
+                        <DockPanel HorizontalAlignment="Center">
+                            <StackPanel DockPanel.Dock="Left"
+                                        Width="175">
+                                <CheckBox Content="Iniciar con Windows"
+                                          Name="cbWindows"
+                                          Checked="cbWindows_Checked"
+                                          Unchecked="cbWindows_Unchecked" />
+                                <CheckBox Content="Iniciar Minimizado"
+                                          HorizontalAlignment="Left"
+                                          Name="cbInicio"
+                                          Checked="cbInicio_Checked"
+                                          Unchecked="cbInicio_Unchecked" />
+                                <CheckBox Content="Modo Experimental"
+                                          IsEnabled="False"
+                                          HorizontalAlignment="Left"
+                                          Name="cbExperimental"
+                                          Checked="cbExperimental_Checked"
+                                          Unchecked="cbExperimental_Unchecked" />
+                            </StackPanel>
+
+                            <StackPanel Width="225"
+                                        DockPanel.Dock="Right">
+                                <Button Grid.Row="1"
+                                        Margin="12,5"
+                                        ToolTip="Guarda un registro de tus archivos multimedia."
+                                        Height="25"
+                                        Foreground="{DynamicResource SecondaryText}"
+                                        BorderBrush="{DynamicResource SecondaryText}"
+                                        FontSize="12"
+                                        Style="{StaticResource MaterialDesignOutlinedDarkButton }"
+                                        Click="Button_Click_1"
+                                        Width="190">
+                                    <StackPanel Orientation="Horizontal"
+                                                Width="180">
+                                        <materialDesign:PackIcon Width="20"
+                                                                 Height="20"
+                                                                 Margin="0,0,10,0"
+                                                                 Foreground="{DynamicResource PrimaryText}"
+                                                                 HorizontalAlignment="Center"
+                                                                 Kind="Sync" />
+                                        <TextBlock Text="Sincronizar Multimedia"
+                                                   FontSize="12"
+                                                   FontWeight="SemiBold"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="{DynamicResource PrimaryText}" />
+                                    </StackPanel>
+                                </Button>
+
+                            </StackPanel>
+
+                            <StackPanel  DockPanel.Dock="Bottom">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image x:Name="camCaptura"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           Height="130"
+                                           Width="150" />
+                                    <Button ToolTip="Prueba de WebCam"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            Click="btnCamara_Click"
+                                            FontSize="13"
+                                            Height="130"
+                                            Width="200"
+                                            Margin="5"
+                                            Foreground="{DynamicResource SecondaryText}"
+                                            BorderBrush="{DynamicResource SecondaryText}"
+                                            Style="{StaticResource MaterialDesignOutlinedDarkButton }">
+
+                                        <materialDesign:PackIcon Width="20"
+                                                                 Height="20"
+                                                                 Foreground="{DynamicResource PrimaryText}"
+                                                                 HorizontalAlignment="Center"
+                                                                 Kind="Camera" />
+                                    </Button>
+                                </Grid>
+                                <TextBox Name="cmbCamara"
+                                         Grid.Column="0"
+                                         Grid.Row="0"
+                                         HorizontalContentAlignment="Center"
+                                         Width="150"
+                                         IsReadOnly="True"
+                                         Foreground="{DynamicResource PrimaryText}"
+                                         BorderBrush="{DynamicResource SecondaryColor}"
+                                         Cursor="Arrow"
+                                         Focusable="False"
+                                         materialDesign:HintAssist.Hint="Camara Web" />
+                            </StackPanel>
+
+                        </DockPanel>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+            <TabItem ToolTip="Directorios"
+                     Foreground="{DynamicResource PrimaryText}">
+                <TabItem.Header>
+                    <StackPanel Width="auto"
+                                Height="auto">
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 Foreground="{DynamicResource PrimaryText}"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="FolderCheck" />
+                    </StackPanel>
+                </TabItem.Header>
+                <StackPanel HorizontalAlignment="Left"
+                            Margin="5">
+                    <StackPanel Margin="5"
+                                Orientation="Horizontal">
+                        <TextBox Name="txtCapturas"
+                                 Width="480"
+                                 Margin="5,0,0,0"
+                                 materialDesign:HintAssist.Hint="Capturas de Pantalla"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Foreground="AliceBlue"
+                                 FontWeight="Medium"
+                                 Cursor="Arrow"
+                                 ToolTip="{Binding ElementName=txtCapturas, Path=Text}"
+                                 Background="Transparent"
+                                 SelectionBrush="{DynamicResource SecondaryText}"
+                                 IsReadOnly="True"
+                                 BorderBrush="AliceBlue" />
+                        <Button ToolTip="Buscar Archivo"
+                                Foreground="{DynamicResource PrimaryText}"
+                                Margin="5,15,0,0"
+                                Style="{StaticResource CustomButton}"
+                                Click="BtnCaptura_Click"
+                                BorderBrush="{x:Null}">
+                            <Grid>
+
+                                <materialDesign:PackIcon Kind="FolderOpen"
+                                                         Width="23"
+                                                         Height="25"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="{DynamicResource PrimaryText}" />
+                            </Grid>
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                Margin="5"
+                                Orientation="Horizontal">
+                        <TextBox Name="txtNotasVoz"
+                                 Width="480"
+                                 Margin="5,0,0,0"
+                                 materialDesign:HintAssist.Hint="Notas de Voz"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Foreground="AliceBlue"
+                                 FontWeight="Medium"
+                                 Cursor="Arrow"
+                                 ToolTip="{Binding ElementName=txtNotasVoz, Path=Text}"
+                                 Background="Transparent"
+                                 SelectionBrush="{DynamicResource SecondaryText}"
+                                 IsReadOnly="True"
+                                 BorderBrush="AliceBlue" />
+                        <Button ToolTip="Buscar Archivo"
+                                Foreground="{DynamicResource PrimaryText}"
+                                Margin="5,15,0,0"
+                                Click="btnNotasVoz_Click"
+                                Style="{StaticResource CustomButton}"
+                                BorderBrush="{x:Null}">
+                            <Grid>
+
+                                <materialDesign:PackIcon Kind="FolderOpen"
+                                                         Width="23"
+                                                         Height="25"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="{DynamicResource PrimaryText}" />
+                            </Grid>
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="2"
+                                Margin="5"
+                                Orientation="Horizontal">
+                        <TextBox Name="txtMp3"
+                                 Width="480"
+                                 Margin="5,0,0,0"
+                                 materialDesign:HintAssist.Hint="Musica"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Foreground="AliceBlue"
+                                 FontWeight="Medium"
+                                 Cursor="Arrow"
+                                 ToolTip="{Binding ElementName=txtMp3, Path=Text}"
+                                 Background="Transparent"
+                                 SelectionBrush="{DynamicResource SecondaryText}"
+                                 IsReadOnly="True"
+                                 BorderBrush="AliceBlue" />
+
+                        <Button ToolTip="Buscar Archivo"
+                                Foreground="{DynamicResource PrimaryText}"
+                                Margin="5,15,0,0"
+                                Style="{StaticResource CustomButton}"
+                                Click="btnMp3_Click"
+                                BorderBrush="{x:Null}">
+                            <Grid>
+
+                                <materialDesign:PackIcon Kind="FolderOpen"
+                                                         Width="23"
+                                                         Height="25"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="{DynamicResource PrimaryText}" />
+                            </Grid>
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="3"
+                                Margin="5"
+                                Orientation="Horizontal">
+                        <TextBox Name="txtVideos"
+                                 Width="480"
+                                 Margin="5,0,0,0"
+                                 materialDesign:HintAssist.Hint="Videos"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Foreground="AliceBlue"
+                                 FontWeight="Medium"
+                                 Cursor="Arrow"
+                                 ToolTip="{Binding ElementName=txtVideos, Path=Text}"
+                                 Background="Transparent"
+                                 SelectionBrush="{DynamicResource SecondaryText}"
+                                 IsReadOnly="True"
+                                 BorderBrush="AliceBlue" />
+
+                        <Button ToolTip="Buscar Archivo"
+                                Foreground="{DynamicResource PrimaryText}"
+                                Margin="5,15,0,0"
+                                Style="{StaticResource CustomButton}"
+                                Click="btnVideos_Click"
+                                BorderBrush="{x:Null}">
+                            <Grid>
+
+                                <materialDesign:PackIcon Kind="FolderOpen"
+                                                         Width="23"
+                                                         Height="25"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="{DynamicResource PrimaryText}" />
+                            </Grid>
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="3"
+                                Margin="5"
+                                Orientation="Horizontal">
+                        <TextBox Name="txtImagenes"
+                                 Width="480"
+                                 Margin="5,0,0,0"
+                                 materialDesign:HintAssist.Hint="Imagenes"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Foreground="AliceBlue"
+                                 FontWeight="Medium"
+                                 Cursor="Arrow"
+                                 ToolTip="{Binding ElementName=txtImagenes, Path=Text}"
+                                 Background="Transparent"
+                                 SelectionBrush="{DynamicResource SecondaryText}"
+                                 IsReadOnly="True"
+                                 BorderBrush="AliceBlue" />
+
+                        <Button ToolTip="Buscar Archivo"
+                                Foreground="{DynamicResource PrimaryText}"
+                                Margin="5,15,0,0"
+                                Style="{StaticResource CustomButton}"
+                                Click="btnImagenes_Click"
+                                BorderBrush="{x:Null}">
+                            <Grid>
+
+                                <materialDesign:PackIcon Kind="FolderOpen"
+                                                         Width="23"
+                                                         Height="25"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="{DynamicResource PrimaryText}" />
+                            </Grid>
+                        </Button>
+
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem ToolTip="Modulo IA"
+                     Foreground="{DynamicResource PrimaryText}">
+                <TabItem.Header>
+                    <StackPanel Width="auto"
+                                Height="auto">
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 Foreground="{DynamicResource PrimaryText}"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="EmojiRobot" />
+                    </StackPanel>
+                </TabItem.Header>
+                <StackPanel Margin="5">
+                    <StackPanel>
+                        <Label Content="Telegram (Bot)"
+                               Foreground="{DynamicResource PrimaryText}"
+                               FontWeight="SemiBold"
+                               HorizontalContentAlignment="Center" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition  Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <TextBox Name="txtIdTelegram"
+                                     Margin="5"
+                                     PreviewKeyDown="txtIdTelegram_PreviewKeyDown"
+                                     materialDesign:HintAssist.Hint="ID Usuario (Telegram)"
+                                     Foreground="{DynamicResource PrimaryText}"
+                                     FontWeight="Medium"
+                                     Background="Transparent"
+                                     materialDesign:TransitionAssist.DisableTransitions="True"
+                                     MaxLength="9"
+                                     SelectionBrush="{DynamicResource SecondaryText}" />
+
+                            <ToggleButton Foreground="{DynamicResource SecondaryColor}"
+                                          Name="cbTelegram"
+                                          Grid.Column="2"
+                                          Checked="cbTelegram_Checked" />
+
+                            <Button     Style="{StaticResource MaterialDesignOutlinedDarkButton }"
+                                        Foreground="{DynamicResource PrimaryText}"
+                                        Content="@AIRHBot (Bot Telegram)"
+                                        FontWeight="Medium"
+                                        Margin="5,10"
+                                        Grid.Column="1"
+                                        Click="BtnBotTelegram_Click"
+                                        BorderBrush="{x:Null}" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <Label     Foreground="{DynamicResource PrimaryText}"
+                                   HorizontalAlignment="Center"
+                                   FontWeight="SemiBold"
+                                   Content="Modulo LLM" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <ComboBox Name="cbCompanyIA"
+                                      Grid.Column="0"
+                                      Grid.Row="0"
+                                      Margin="5"
+                                      SelectedIndex="0"
+                                      DropDownClosed="cbCompanyIA_DropDownClosed"
+                                      Foreground="{DynamicResource PrimaryText}"
+                                      BorderBrush="{DynamicResource PrimaryText}"
+                                      materialDesign:HintAssist.Hint="Servidor">
+                                <ComboBoxItem Content="Local" />
+                                <ComboBoxItem Content="Personalizado" />
+                            </ComboBox>
+
+                            <TextBox Name="txbAPI_IA"
+                                     Grid.Column="0"
+                                     Grid.Row="2"
+                                     Margin="5"
+                                     materialDesign:HintAssist.Hint="APIKey"
+                                     Foreground="{DynamicResource PrimaryText}"
+                                     FontWeight="Medium"
+                                     Background="Transparent"
+                                     materialDesign:TransitionAssist.DisableTransitions="True"
+                                     SelectionBrush="{DynamicResource SecondaryText}" />
+
+                            <ComboBox Name="cbModelIALocal"
+                                      Grid.Column="1"
+                                      Grid.Row="0"
+                                      Margin="5"
+                                      SelectedIndex="0"
+                                      DropDownClosed="cbCompanyIA_DropDownClosed"
+                                      Foreground="{DynamicResource PrimaryText}"
+                                      BorderBrush="{DynamicResource PrimaryText}"
+                                      materialDesign:HintAssist.Hint="Modelo (Local)" />
+
+                            <TextBox Name="cbModelIAOnline"
+                                     Grid.Column="0"
+                                     Grid.Row="1"
+                                     Margin="5"
+                                     materialDesign:HintAssist.Hint="Modelo (Online)"
+                                     Foreground="{DynamicResource PrimaryText}"
+                                     SelectionBrush="{DynamicResource SecondaryText}"
+                                     Background="Transparent"
+                                     materialDesign:TransitionAssist.DisableTransitions="True"
+                                     FontWeight="Medium" />
+
+                            <TextBox Name="URL_IA"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                     Margin="5"
+                                     materialDesign:HintAssist.Hint="End-Point"
+                                     Foreground="{DynamicResource PrimaryText}"
+                                     FontWeight="Medium"
+                                     Background="Transparent"
+                                     materialDesign:TransitionAssist.DisableTransitions="True"
+                                     SelectionBrush="{DynamicResource SecondaryText}" />
+
+                            <Button Content="Modelo IA"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="12,5"
+                                    Height="25"
+                                    ToolTip="Directorio de modelos IA [GGUF]."
+                                    Foreground="{DynamicResource SecondaryText}"
+                                    BorderBrush="{DynamicResource SecondaryText}"
+                                    FontSize="12"
+                                    Style="{StaticResource MaterialDesignOutlinedDarkButton }"
+                                    Click="Button_Click" />
+
+                            <ToggleButton Foreground="{DynamicResource SecondaryColor}"
+                                          Name="cbIA"
+                                          Grid.Column="0"
+                                          Grid.ColumnSpan="2"
+                                          Grid.Row="3"
+                                          Margin="0,25"
+                                          HorizontalAlignment="Center"
+                                          Checked="cbNeoxz_Checked"
+                                          Unchecked="cbNeoxz_Unchecked" />
+
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem ToolTip="Notificación"
+                     Foreground="{DynamicResource PrimaryText}">
+                <TabItem.Header>
+                    <StackPanel Width="auto"
+                                Height="auto">
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 Foreground="{DynamicResource PrimaryText}"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="Bell" />
+                    </StackPanel>
+                </TabItem.Header>
+                <StackPanel Margin="5">
+                    <Label Content="Notificación de Clima"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryText}"
+                           HorizontalContentAlignment="Center" />
+                    <ComboBox Name="cbPaises"
+                              Margin="5"
+                              Foreground="{DynamicResource PrimaryText}"
+                              BorderBrush="{DynamicResource PrimaryText}"
+                              materialDesign:HintAssist.Hint="Pais"
+                              DropDownClosed="CbPaises_DropDownClosed"
+                              ToolTip="Seleccionar Pais" />
+
+                    <TextBox Name="txbEstado"
+                             Margin="5"
+                             materialDesign:HintAssist.Hint="Provincia"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Foreground="{DynamicResource PrimaryText}"
+                             SelectionBrush="{DynamicResource SecondaryText}"
+                             BorderBrush="{DynamicResource PrimaryText}"
+                             FontWeight="Medium"
+                             TextWrapping="Wrap" />
+
+                    <StackPanel Margin="5,0,5,0"
+                                VerticalAlignment="Center">
+                        <Label Content="Notificación de Correo electronico"
+                               FontWeight="SemiBold"
+                               Margin="0,10,0,0"
+                               Foreground="{DynamicResource PrimaryText}"
+                               HorizontalContentAlignment="Center" />
+
+                        <StackPanel Grid.Row="1"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+
+                            <RadioButton Content="Gmail"
+                                         Margin="5,10"
+                                         FontSize="12"
+                                         Click="G_GmailView"
+                                         MouseEnter="RadioButton_MouseEnter"
+                                         MouseLeave="RadioButton_MouseLeave"
+                                         Name="gmail"
+                                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
+                                         Foreground="{DynamicResource SecondaryText}"
+                                         BorderBrush="{DynamicResource SecondaryText}" />
+                            <RadioButton Content="Yahoo"
+                                         Click="G_YahooView"
+                                         Name="yahoo"
+                                         Foreground="{DynamicResource SecondaryText}"
+                                         BorderBrush="{DynamicResource SecondaryText}"
+                                         Margin="5,10"
+                                         FontSize="12"
+                                         MouseEnter="RadioButton_MouseEnter_1"
+                                         MouseLeave="RadioButton_MouseLeave_1"
+                                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
+                            <RadioButton Content="Hotmail"
+                                         Foreground="{DynamicResource SecondaryText}"
+                                         BorderBrush="{DynamicResource SecondaryText}"
+                                         Name="hotmail"
+                                         Margin="5,10"
+                                         FontSize="12"
+                                         MouseEnter="RadioButton_MouseEnter_2"
+                                         MouseLeave="RadioButton_MouseLeave_2"
+                                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
+                                         Click="G_HotmailView" />
+                            <RadioButton Content="Correo Personal"
+                                         Foreground="{DynamicResource SecondaryText}"
+                                         BorderBrush="{DynamicResource SecondaryText}"
+                                         Name="otros"
+                                         Margin="5,10"
+                                         FontSize="12"
+                                         MouseEnter="RadioButton_MouseEnter_3"
+                                         MouseLeave="RadioButton_MouseLeave_3"
+                                         Click="G_OtrosView"
+                                         Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
+                        </StackPanel>
+
+                        <TextBox ToolTip="Escriba el correo a verificar"
+                                 Name="txtUserPersonal"
+                                 Margin="5,0,5,0"
+                                 materialDesign:HintAssist.Hint="Usuario"
+                                 FontWeight="Medium"
+                                 Foreground="{DynamicResource PrimaryText}"
+                                 SelectionBrush="{DynamicResource SecondaryText}"
+                                 BorderBrush="{DynamicResource PrimaryText}"
+                                 TextWrapping="Wrap" />
+
+                        <PasswordBox ToolTip="Escriba la contraseña del correo a verificar"
+                                     Name="txtPassPersonal"
+                                     Margin="5,0,5,0"
+                                     materialDesign:HintAssist.Hint="Contraseña"
+                                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                     FontWeight="Medium"
+                                     Foreground="{DynamicResource PrimaryText}"
+                                     SelectionBrush="{DynamicResource SecondaryText}"
+                                     BorderBrush="{DynamicResource PrimaryText}" />
+
+                        <TextBox ToolTip="Escriba el servidor"
+                                 Name="txtServidor"
+                                 Margin="5,0,5,0"
+                                 materialDesign:HintAssist.Hint="Servidor"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 TextWrapping="Wrap"
+                                 FontWeight="Medium"
+                                 Foreground="{DynamicResource PrimaryText}"
+                                 SelectionBrush="{DynamicResource SecondaryText}"
+                                 BorderBrush="{DynamicResource PrimaryText}" />
+
+                        <TextBox Name="txtPuerto"
+                                 Margin="5,0,5,0"
+                                 materialDesign:HintAssist.Hint="Puerto"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 TextWrapping="Wrap"
+                                 FontWeight="Medium"
+                                 PreviewKeyDown="txtIdTelegram_PreviewKeyDown"
+                                 Foreground="{DynamicResource PrimaryText}"
+                                 SelectionBrush="{DynamicResource SecondaryText}"
+                                 BorderBrush="{DynamicResource PrimaryText}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Content="POP3"
+                                     Name="radioPOP"
+                                     Margin="5,10"
+                                     Checked="radioPOP_Checked">
+                            <RadioButton.Resources>
+                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                 Color="AliceBlue" />
+                            </RadioButton.Resources>
+                        </RadioButton>
+                        <RadioButton Content="IMAP"
+                                     Name="radioIMAP"
+                                     Margin="5,10"
+                                     Checked="radioIMAP_Checked">
+                            <RadioButton.Resources>
+                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                 Color="AliceBlue" />
+                            </RadioButton.Resources>
+                        </RadioButton>
+
+                        <CheckBox Content="SSL"
+                                  Name="cbSSL"
+                                  Margin="5"
+                                  Foreground="{DynamicResource PrimaryText}"
+                                  Background="{DynamicResource PrimaryText}" />
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <TextBlock Text="Activar"
+                                   Margin="5,10" />
+                        <CheckBox Margin="5,10"
+                                  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                                  Name="cbPersonal"
+                                  Checked="cbPersonal_Checked"
+                                  Unchecked="cbPersonal_Unchecked"
+                                  Foreground="{DynamicResource SecondaryColor}" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem ToolTip="Personalización"
+                     Foreground="{DynamicResource PrimaryText}">
+                <TabItem.Header>
+                    <StackPanel Width="auto"
+                                Height="auto">
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 Foreground="{DynamicResource PrimaryText}"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="Palette" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <StackPanel>
+
+                    <StackPanel>
+                        <Grid>
+                            <StackPanel Margin="12,5">
+
+                                <TextBlock Foreground="Gray"
+                                           FontWeight="Medium"
+                                           Background="Transparent"
+                                           TextWrapping="Wrap"
+                                           Text="Opacidad" />
+
+                                <Slider LargeChange="0.1"
+                                        Value="0.7"
+                                        Name="sldOpa"
+                                        Minimum="0.3"
+                                        TickFrequency="0.1"
+                                        ValueChanged="sldOpa_ValueChanged"
+                                        Maximum="1" />
+
+                            </StackPanel>
+                        </Grid>
+                        <Grid>
+                            <StackPanel Margin="5">
+                                <xc:ColorCanvas SelectedColorChanged="ColorCanvas_SelectedColorChanged"
+                                                Margin="5"
+                                                Foreground="{DynamicResource PrimaryText}"
+                                                Background="Transparent" />
+
+
+                                <StackPanel Margin="5">
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <RadioButton Grid.Column="0"
+                                                     Grid.Row="0"
+                                                     IsChecked="True"
+                                                     Content="PrimaryColor (Fondo)"
+                                                     BorderBrush="AliceBlue"
+                                                     Checked="RadioButton_CheckedPriCol"
+                                                     Foreground="AliceBlue">
+                                            <RadioButton.Resources>
+                                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                                 Color="AliceBlue" />
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+                                        <RadioButton Grid.Column="1"
+                                                     Grid.Row="0"
+                                                     Checked="RadioButton_CheckedSecCol"
+                                                     Content="SecondaryColor"
+                                                     Foreground="{DynamicResource SecondaryColor}">
+                                            <RadioButton.Resources>
+                                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                                 Color="AliceBlue" />
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+
+                                        <RadioButton Grid.Column="0"
+                                                     Grid.Row="1"
+                                                     Checked="RadioButton_CheckedPriTex"
+                                                     Content="PrimaryText"
+                                                     Foreground="{DynamicResource PrimaryText}">
+                                            <RadioButton.Resources>
+                                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                                 Color="AliceBlue" />
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+                                        <RadioButton Grid.Column="1"
+                                                     Grid.Row="1"
+                                                     Checked="RadioButton_CheckedSecTex"
+                                                     Content="SecondaryText"
+                                                     Foreground="{DynamicResource SecondaryText}">
+                                            <RadioButton.Resources>
+                                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                                 Color="AliceBlue" />
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+
+                                        <RadioButton Grid.Column="0"
+                                                     Grid.Row="2"
+                                                     Checked="RadioButton_CheckedPriAcsText"
+                                                     Content="PrimaryAcsendText"
+                                                     Foreground="{DynamicResource PrimaryAcsendText}">
+                                            <RadioButton.Resources>
+                                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                                 Color="AliceBlue" />
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+                                        <RadioButton Grid.Column="1"
+                                                     Grid.Row="2"
+                                                     Checked="RadioButton_CheckedSecAcsTex"
+                                                     Content="SecondaryAcsendText"
+                                                     Foreground="{DynamicResource SecondaryAcsendText}">
+                                            <RadioButton.Resources>
+                                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                                 Color="AliceBlue" />
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+
+                                        <RadioButton Grid.Column="0"
+                                                     Grid.Row="3"
+                                                     Content="ColorProgress"
+                                                     Checked="RadioButton_CheckedProg"
+                                                     Foreground="{DynamicResource ColorProgress}">
+                                            <RadioButton.Resources>
+                                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                                                 Color="AliceBlue" />
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+
+                                    </Grid>
+                                    <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Center">
+                                        <Button Content="Aplicar"
+                                                Margin="5"
+                                                Click="Button_Click_22"
+                                                Width="290"
+                                                Height="80"
+                                                Foreground="{DynamicResource SecondaryText}"
+                                                BorderBrush="{DynamicResource SecondaryText}"
+                                                Style="{StaticResource MaterialDesignOutlinedDarkButton }" />
+                                        <Button Content="Reestablecer"
+                                                Margin="5"
+                                                Width="290"
+                                                Height="80"
+                                                Click="Button_Click_12"
+                                                Foreground="{DynamicResource SecondaryText}"
+                                                BorderBrush="{DynamicResource SecondaryText}"
+                                                Style="{StaticResource MaterialDesignOutlinedDarkButton }" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+
+        <RadioButton Content="Guardar"
+                     Grid.Row="1"
+                     Margin="12,5"
+                     Height="25"
+                     Foreground="{DynamicResource SecondaryText}"
+                     BorderBrush="{DynamicResource SecondaryText}"
+                     FontSize="12"
+                     Click="Guardar_Click"
+                     Style="{StaticResource MaterialDesignOutlinedDarkButton }" />
+    </Grid>
+</UserControl>
