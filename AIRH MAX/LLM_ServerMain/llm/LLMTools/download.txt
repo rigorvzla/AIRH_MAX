@@ -1,0 +1,2 @@
+httpsgithub.comggml-orgllama.cppreleasesdownloadb8676llama-b8676-bin-win-cpu-x64.zip
+or similar version 

@@ -1,0 +1,2 @@
+mmproj-qwen3.5vl-0.8B-ImageExplainer-GGUF-Q8_0
+qwen3.5vl-0.8B-ImageExplainer-GGUF-Q8_0
