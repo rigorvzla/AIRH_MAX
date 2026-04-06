@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style TargetType="{x:Type xc:MessageBox}">
+        <Setter Property="Background"
+                Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource PrimaryText}" />
+        <Setter Property="CaptionForeground"
+                Value="{DynamicResource PrimaryText}" />
+        <Setter Property="WindowBorderBrush"
+                Value="{DynamicResource PrimaryText}" />
+        <Setter Property="WindowBackground"
+                Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="WindowOpacity"
+                Value="1" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource PrimaryText}" />
+        <Setter Property="FontSize"
+                Value="14" />
+    </Style>
+
+   
+</ResourceDictionary>

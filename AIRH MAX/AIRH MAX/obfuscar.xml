@@ -1,0 +1,47 @@
+﻿<?xml version='1.0'?>
+<Obfuscator>
+	<Var name="InPath" value=".\bin\x64\Release\net8.0-windows8.0\" />
+	<Var name="OutPath" value=".\bin\x64\Release\net8.0-windows8.0\obfuscated\" />
+
+	<Var name="RenameFields" value="true" />
+	<Var name="RenameMethods" value="true" />
+	<Var name="RenameTypes" value="true" />
+	<Var name="HideStrings" value="true" />
+	<Var name="ControlFlow" value="true" />
+	<Var name="SuppressIldasm" value="true" />
+	<Var name="AntiILDasm" value="true" />
+
+	<Var name="RenameProperties" value="false" />
+	<Var name="RenameEvents" value="false" />
+
+	<AssemblySearchPath path="C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.7" />
+	<AssemblySearchPath path="C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\8.0.7" />
+
+	<Module file="$(InPath)AIRH MAX.dll" />
+	<Module file="$(InPath)ErrorReportingNET.dll" />
+	<Module file="$(InPath)InfoSystem_v2.dll" />
+	<Module file="$(InPath)MAX.dll" />
+	<Module file="$(InPath)PiperSharp.dll" />
+	<Module file="$(InPath)Vosk_STT.dll"/>
+	<!--<Module file="$(InPath)LLM_ServerMain.dll" />-->
+
+	<!-- ✅ EXCLUSIONES OBLIGATORIAS -->
+	<!-- Views (incluyendo subcarpetas) -->
+	<SkipNamespace name="Asr" />
+	<SkipNamespace name="Asr.*" />
+	<SkipNamespace name="*.Controls" />
+	<SkipNamespace name="*.Controls.*" />
+	<SkipNamespace name="*.Models" />
+	<SkipNamespace name="*.Models.*" />
+	<SkipNamespace name="*.Popups" />
+	<SkipNamespace name="*.Popups.*" />
+	<SkipNamespace name="*.Views" />
+	<SkipNamespace name="*.Views.*" />
+	<SkipNamespace name="*.ViewModels" />
+	<SkipNamespace name="*.ViewModels.*" />
+
+	<!-- Excluir clases de IA que manejan respuestas JSON -->
+	<SkipType name="AIRH_MAX.ClassView.IA.ServerPlataform" />
+	<SkipType name="AIRH_MAX.ClassView.IA.Modulo" />
+	<SkipNamespace name="AIRH_MAX.ClassView.IA" />
+</Obfuscator>

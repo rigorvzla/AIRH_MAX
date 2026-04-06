@@ -1,0 +1,55 @@
+﻿<Window x:Class="AIRH_MAX.Popups.AvisoActivado"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AIRH_MAX.Popups"
+        mc:Ignorable="d"
+        Height="2"
+        Width="160"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="{x:Null}"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        Topmost="True"
+        IsEnabled="False"
+        Focusable="False"
+        Loaded="Window_Loaded_1"
+        Top="0">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <StackPanel.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF02010F"
+                                  Offset="0.0" />
+                    <GradientStop Color="#FF020117"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </StackPanel.Background>
+        </StackPanel>
+
+        <StackPanel Background="#FF00FF00"
+                    Grid.Column="1"
+                    Name="Popup" />
+
+        <StackPanel Grid.Column="2">
+            <StackPanel.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF02010F"
+                                  Offset="0.0" />
+                    <GradientStop Color="#FF020117"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </StackPanel.Background>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,402 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AIRH_MAX.Theme">
+    <Style TargetType="ListViewItem"
+           x:Key="CMDTheme">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+
+                        <Ellipse Width="40"
+                                 Height="40"
+                                 Margin="10,0,0,-5">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImageSource}"
+                                            RenderOptions.BitmapScalingMode="Fant" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Nombre_IA}"
+                                           Foreground="Lime"
+                                           FontWeight="Regular"
+                                           FontSize="14"
+                                           VerticalAlignment="Center"
+                                           Margin="5,10,0,-5" />
+
+                                <TextBlock Text="{Binding Mensaje}"
+                                           Foreground="AliceBlue"
+                                           FontWeight="UltraLight"
+                                           Margin="5"
+                                           Width="450"
+                                           TextWrapping="Wrap"
+                                           FontSize="13" />
+
+                                <TextBlock Text="{Binding Tiempo}"
+                                           Foreground="#FF35FDE2"
+                                           FontWeight="Light"
+                                           FontSize="10"
+                                           Margin="7,0,0,0"
+                                           VerticalAlignment="Bottom"
+                                           Background="{x:Null}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="ListViewItem"
+           x:Key="ChatItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <!-- Contenedor principal -->
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Avatar -->
+                        <Ellipse Grid.Column="0"
+                                 Width="30"
+                                 Height="30"
+                                 Margin="10,10,10,0"
+                                 VerticalAlignment="Top">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImageSource}"
+                                            RenderOptions.BitmapScalingMode="Fant" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <!-- Contenido del mensaje -->
+                        <Border Grid.Column="1"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="8">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <!-- Nombre -->
+                                <TextBlock Grid.Row="0"
+                                           Text="{Binding Nombre_IA}"
+                                           Foreground="{DynamicResource PrimaryAcsendText}"
+                                           FontWeight="Regular"
+                                           FontSize="12" />
+
+                                <!-- Mensaje - CON INTERACTIVIDAD -->
+                                <Border Grid.Row="1"
+                                        Background="Transparent"
+                                        Padding="0">
+                                    <!-- Border no intercepta clicks -->
+                                    <TextBlock local:TextBlockExtensions.AutoLink="{Binding Mensaje}"
+                                               Foreground="{DynamicResource PrimaryText}"
+                                               FontWeight="UltraLight"
+                                               TextWrapping="Wrap"
+                                               FontSize="13"
+                                               HorizontalAlignment="Stretch"
+                                           Focusable="True"/>
+                            </Border>
+
+                                <!-- Hora -->
+                                <TextBlock Grid.Row="2"
+                                           Text="{Binding Tiempo}"
+                                           Foreground="{DynamicResource SecondaryAcsendText}"
+                                           FontWeight="Light"
+                                           FontSize="10"
+                                           HorizontalAlignment="Right"
+                                           Margin="0,10,0,0" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <!-- Asegurar que no haya selección visual -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Configuraciones adicionales importantes -->
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Top" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="Margin"
+                Value="0,2,0,2" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Focusable"
+                Value="False" />
+
+    </Style>
+    <Style TargetType="ListViewItem"
+           x:Key="ItemMultimedia">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="5">
+
+                        <Ellipse Width="30"
+                                 Height="30"
+                                 Margin="10,0,0,-5">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImageSource}"
+                                            RenderOptions.BitmapScalingMode="Fant" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Nombre_IA}"
+                                               Foreground="Lime"
+                                               FontWeight="Regular"
+                                               FontSize="14"
+                                               VerticalAlignment="Center"
+                                               Margin="5,10,0,-5" />
+
+                                    <TextBlock Text="{Binding Mensaje}"
+                                               Foreground="AliceBlue"
+                                               FontWeight="UltraLight"
+                                               Margin="5"
+                                               Width="600"
+                                               TextWrapping="Wrap"
+                                               FontSize="13" />
+
+                                    <TextBlock Text="{Binding Tiempo}"
+                                               Foreground="#FF35FDE2"
+                                               FontWeight="Light"
+                                               FontSize="10"
+                                               Margin="7,0,0,0"
+                                               VerticalAlignment="Bottom"
+                                               Background="{x:Null}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="ListViewItem"
+           x:Key="ItemDescarga">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+
+                        <Ellipse Width="30"
+                                 Height="30"
+                                 Margin="10,0,0,-5">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImageSource}"
+                                            RenderOptions.BitmapScalingMode="Fant" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <Image Width="30"
+                               Height="30"
+                               Margin="10,0,0,0"
+                               Stretch="UniformToFill"
+                               Source="{Binding ImageSourceDescarga}" />
+
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Nombre_IA}"
+                                               Foreground="Lime"
+                                               FontWeight="Regular"
+                                               FontSize="14"
+                                               VerticalAlignment="Center"
+                                               Margin="5,10,0,-5" />
+
+                                    <TextBlock Text="{Binding Mensaje}"
+                                               Foreground="AliceBlue"
+                                               FontWeight="UltraLight"
+                                               Margin="5"
+                                               Width="230"
+                                               TextWrapping="Wrap"
+                                               FontSize="13" />
+
+                                    <TextBlock Text="{Binding Tiempo}"
+                                               Foreground="#FF35FDE2"
+                                               FontWeight="Light"
+                                               FontSize="10"
+                                               Margin="7,0,0,0"
+                                               VerticalAlignment="Bottom"
+                                               Background="{x:Null}" />
+                                </StackPanel>
+                                <Label Content="{Binding radio}"
+                                       HorizontalAlignment="Center"
+                                       Margin="5"
+                                       ToolTip="Reproducir descarga"
+                                       VerticalAlignment="Center"
+                                       HorizontalContentAlignment="Center"
+                                       Background="Transparent" />
+
+
+                                <Label Content="{Binding button}"
+                                       HorizontalAlignment="Center"
+                                       Margin="5"
+                                       ToolTip="Detener descarga"
+                                       VerticalAlignment="Center"
+                                       HorizontalContentAlignment="Center"
+                                       Background="Transparent" />
+
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="ListViewItem"
+           x:Key="LogItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <!-- Contenedor principal -->
+                    <Grid HorizontalAlignment="Stretch"
+                          Margin="5,2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Fila superior: Nombre + Hora -->
+                        <Grid Grid.Row="0"
+                              Margin="8,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Nombre (izquierda) -->
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding Nombre_IA}"
+                                       Foreground="{DynamicResource PrimaryAcsendText}"
+                                       FontWeight="Regular"
+                                       FontSize="12"
+                                       VerticalAlignment="Center" />
+
+                            <!-- Hora (derecha) -->
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Tiempo}"
+                                       Foreground="{DynamicResource SecondaryAcsendText}"
+                                       FontWeight="Light"
+                                       FontSize="10"/>
+                        </Grid>
+
+                        <!-- Fila inferior: Mensaje completo -->
+                        <Border Grid.Row="1"
+                                Padding="8"
+                                CornerRadius="4"
+                                Background="{DynamicResource SecondaryBackground}">
+                            <TextBlock Text="{Binding Mensaje}"
+                                       Foreground="{DynamicResource PrimaryText}"
+                                       FontWeight="UltraLight"
+                                       TextWrapping="Wrap"
+                                       FontSize="13"
+                                       HorizontalAlignment="Stretch" />
+                        </Border>
+                    </Grid>
+
+                    <!-- Eliminar efectos de selección -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Configuraciones adicionales -->
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Top" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="IsHitTestVisible"
+                Value="False" />
+        <Setter Property="Margin"
+                Value="0,1,0,1" />
+    </Style>
+    <Style TargetType="ListViewItem"
+           x:Key="ItemYouTube">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+
+                        <Ellipse Width="40"
+                                 Height="40"
+                                 Margin="10,0,0,-5">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImageSource}"
+                                            RenderOptions.BitmapScalingMode="Fant" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Nombre_IA}"
+                                               Foreground="Lime"
+                                               FontWeight="Regular"
+                                               FontSize="14"
+                                               VerticalAlignment="Center"
+                                               Margin="5,10,0,-5" />
+
+                                    <TextBlock Text="{Binding Mensaje}"
+                                               Foreground="AliceBlue"
+                                               FontWeight="UltraLight"
+                                               Margin="5"
+                                               Width="230"
+                                               TextWrapping="Wrap"
+                                               FontSize="13" />
+
+                                    <TextBlock Text="{Binding Tiempo}"
+                                               Foreground="#FF35FDE2"
+                                               FontWeight="Light"
+                                               FontSize="10"
+                                               Margin="7,0,0,0"
+                                               VerticalAlignment="Bottom"
+                                               Background="{x:Null}" />
+                                </StackPanel>
+                                <Image Width="50"
+                                       Height="50"
+                                       Margin="10,0,0,0"
+                                       Stretch="UniformToFill"
+                                       Source="{Binding ImageSourceDescarga}" />
+
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

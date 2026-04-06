@@ -1,0 +1,164 @@
+﻿<Window x:Class="AIRH_MAX.Popups.WizardStart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AIRH_MAX.Popups"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        WindowStartupLocation="CenterScreen"
+        Height="450"
+        Width="800"
+        ResizeMode="NoResize"
+        WindowStyle="None">
+
+    <xctk:Wizard Finish="Wizard_Finish"
+                 HelpButtonVisibility="Hidden"
+                 CancelButtonVisibility="Visible"
+                 Cancel="Wizard_Cancel"
+                 Next="Wizard_Next"                 
+                 Previous="Wizard_Previous"
+                 Name="wiz"
+                 IsEnabled="False"
+                 NextButtonContent="Siguiente &gt;"
+                 FinishButtonContent="Finalizar"
+                 CancelButtonContent="Cancelar"
+                 BackButtonContent="&lt; Atras">
+
+        <xctk:Wizard.Resources>
+            <Style TargetType="Button">
+                <Setter Property="FontWeight"
+                        Value="Bold" />
+            </Style>
+        </xctk:Wizard.Resources>
+
+        <xctk:WizardPage x:Name="IntroPage"
+                         Title="Asistente Virtual AIRH MAX">
+            <xctk:WizardPage.ExteriorPanelBackground>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="Black"
+                                  Offset="1" />
+                    <GradientStop Color="#FF02010F"
+                                  Offset="0" />
+                </LinearGradientBrush>
+            </xctk:WizardPage.ExteriorPanelBackground>
+
+            <TextBlock TextWrapping="Wrap">
+    <Run>Una herramienta innovadora que utiliza inteligencia artificial para simplificar tus tareas diarias, reducir distracciones y aumentar tu productividad.</Run>
+    <LineBreak />
+    <StackPanel>
+        <TextBlock Margin="5">
+            <Run>- Podras recibir recomendaciones personalizadas para aplicaciones, archivos y ajustes</Run>
+        </TextBlock>
+        <TextBlock Margin="5">
+            <Run>- Podras obtener asistencia en tiempo real para tareas como programar citas, enviar correos electrónicos y mas...</Run>
+        </TextBlock>
+        <TextBlock Margin="5">
+            <Run>- Podra mantenerse organizado con recordatorios, notificaciones y actualizaciones de calendario</Run>
+        </TextBlock>
+        <TextBlock Margin="5">
+            <Run>- Podras obtener respuestas instantáneas a tus preguntas</Run>
+        </TextBlock>
+        <TextBlock Margin="5">
+            <Run>- Podra ayudarte con la traducción de idiomas, conversiones de unidades y cálculos</Run>
+        </TextBlock>
+        <TextBlock Margin="5">
+            <Run>- Podras recibir sugerencias para el entretenimiento</Run>
+        </TextBlock>
+        <TextBlock Margin="5">
+            <Run>- Podra integrarse con aplicaciones y servicios populares</Run>
+        </TextBlock>
+    </StackPanel>
+    <LineBreak />  <LineBreak />
+    <Run>El Asistente Virtual AIRH MAX se adapta a tus hábitos y preferencias, convirtiéndose en un compañero cada vez más valioso con el tiempo. Con su interfaz intuitiva y capacidades de procesamiento de lenguaje natural, puedes comunicarte con él de manera conversacional.</Run>
+</TextBlock>
+        </xctk:WizardPage>
+        <xctk:WizardPage x:Name="Page1"
+                         PageType="Interior"
+                         Background="LightGray"
+                         FontSize="14"                      
+                         Title="Antes de empezar a utilizar el Asistente Virtual, debes realizar algunas configuraciones iniciales."
+                         NextPage="{Binding ElementName=LastPage}"
+                         PreviousPage="{Binding ElementName=IntroPage}">
+            <StackPanel>
+                <TextBlock Margin="5,0,5,0"
+                           FontSize="12">Primero, debes proporcionar tu nombre de usuario para identificarte en el sistema.</TextBlock>
+                <TextBox Name="txtNombreUsuario"
+                         Margin="5,0,5,0"
+                         FontSize="12"
+                         materialDesign:HintAssist.Hint="Nombre de Usuario"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontWeight="Medium"
+                         TextWrapping="Wrap"
+                         BorderThickness="0,0,0,1"
+                         Foreground="Black" />
+
+                <TextBlock Margin="5,20,5,0"
+                           FontSize="12">Segundo, debes asignar un nombre al asistente para personalizar su experiencia.</TextBlock>
+                <TextBox Name="txtNombreIA"
+                         Margin="5,0,5,0"
+                         FontSize="12"
+                         materialDesign:HintAssist.Hint="Nombre de Asistente"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontWeight="Medium"
+                         TextWrapping="Wrap"
+                         BorderThickness="0,0,0,1"
+                         Foreground="Black" />
+
+                <TextBlock Margin="5,20,5,0"
+                           FontSize="12"
+                           TextWrapping="Wrap">Finalmente, debes asignar una orden para desactivar al asistente en caso de que no estés utilizando el sistema durante un período prolongado.</TextBlock>
+                <TextBox Name="txtDespedida"
+                         FontSize="12"
+                         Margin="5,0,5,0"
+                         materialDesign:HintAssist.Hint="Comando de Desactivación"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontWeight="Medium"
+                         TextWrapping="Wrap"
+                         BorderThickness="0,0,0,1"
+                         Foreground="Black" />
+            </StackPanel>
+
+        </xctk:WizardPage>
+        <xctk:WizardPage x:Name="LastPage"
+                         PageType="Exterior"
+                         FontSize="13"
+                         Title="Configuración Terminada"
+                         CanFinish="True">
+
+            <TextBlock TextWrapping="Wrap">
+    <Run>¡El Asistente Virtual AIRH MAX está listo para atender tus necesidades!</Run>
+    <LineBreak />
+    <Run>La información generada por el asistente sera almacenada en la ruta raíz del programa, en una carpeta personalizada con el nombre de usuario que has registrado previamente.</Run>
+    <LineBreak />
+<TextBlock Name="txtRuta"
+                FontWeight="SemiBold"
+                Margin="5">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat=".../Asistente Virtual MAX/Perfiles/{0}">
+                            <Binding ElementName="txtNombreUsuario"
+                                     Path="Text" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+</TextBlock>  
+    <LineBreak />
+    <Run>Puedes encontrar todos los archivos generados en esta carpeta.</Run>
+    <LineBreak />
+    <Run>¡Disfruta de tu experiencia con el Asistente Virtual AIRH MAX!</Run>
+            </TextBlock>
+
+            <xctk:WizardPage.ExteriorPanelBackground>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="Black"
+                                  Offset="1" />
+                    <GradientStop Color="#FF02010F"
+                                  Offset="0" />
+                </LinearGradientBrush>
+            </xctk:WizardPage.ExteriorPanelBackground>
+        </xctk:WizardPage>
+    </xctk:Wizard>
+</Window>
