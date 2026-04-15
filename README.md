@@ -1,3 +1,7 @@
+> **📌 NOTA IMPORTANTE**  
+> Este código corresponde a una **versión base** del proyecto.  
+> A partir de la **versión 7.1** en adelante, el código ha sufrido modificaciones significativas por parte del desarrollador. ✨👨‍💻
+
 # 🎙️ AV-AIRH: Asistente Virtual por Voz con IA Local
 
 **Transforma tus palabras en acción.**  
