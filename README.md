@@ -1,5 +1,5 @@
 > **📌 NOTA IMPORTANTE**  
-> Este código corresponde a una **versión base** del proyecto.  
+> Este código corresponde a la **versión 7.1** del proyecto.  
 > A partir de la **versión 7.1** en adelante, el código ha sufrido modificaciones significativas por parte del desarrollador. ✨👨‍💻
 
 # 🎙️ AV-AIRH: Asistente Virtual por Voz con IA Local
