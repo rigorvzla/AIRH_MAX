@@ -26,8 +26,8 @@ namespace AIRH_MAX.ClassView
 
         public static string user => File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "user.dat"));
 
-        public const string API_BASE_URL = "https://servermax.onrender.com";
-        public const string API_KEY = "2025";
+        public const string API_BASE_URL = "";
+        public const string API_KEY = "";
 
         public static int PosY;
         public static int PosX;
