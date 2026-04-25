@@ -44,7 +44,7 @@ Una vez instalado, activa a AIRH con tu palabra de activación (ej: "Oye AIRH") 
 - *"Crea un recordatorio que diga: comprar leche."*
 - *"Reproduce música relajante."*
 
-📖 Para dominar **todos los comandos y funciones avanzadas**, consulta el [Manual de Usuario](https://av-airh.com/manual).
+📖 Para dominar **todos los comandos y funciones avanzadas**, consulta el [Manual de Usuario](https://github.com/rigorvzla/AIRH_MAX/blob/main/AIRH%20MAX/AIRH%20MAX/Manual.pdf).
 
 ---
 
