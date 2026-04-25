@@ -71,3 +71,26 @@ AV-AIRH MAX es un proyecto **100% gratuito y de código abierto**. Sin embargo, 
 | **Zinli** | `rigorrico@gmail.com` | [25$] |
 | **Cripto (USDT)** | Red: `TRC-20`<br>Dirección: `TMJNgo6sZLjC2GJ3gKu4KLCPerp8ENyXG3` | [25$] |
 ---
+
+## ¿Cómo hacer una donación?
+Selecciona el método de pago de tu preferencia
+1- Realiza la transferencia por el monto mínimo de $25 USD (o superior)
+2- Guarda el comprobante de la transacción
+3- Envía un correo a rigorrico@gmail.com con el comprobante
+4- Tu nombre aparecerá en la lista de patrocinadores (si lo autorizas)
+
+## 🎁 Beneficios para patrocinadores
+
+| Nivel | Donación | Beneficios |
+| :--- | :--- | :--- |
+| 🥉 Bronce | $25+ | Nombre en lista de patrocinadores |
+| 🥈 Plata | $50+ | Nombre + acceso anticipado a betas |
+| 🥇 Oro | $100+ | Nombre + beta + soporte prioritario |
+| 👑 Platino | $250+ | Todo lo anterior + feature solicitada |
+
+## ¿A dónde van las donaciones?
+- 🖥️ Mantenimiento de servidores - Hosting y dominio
+- 🔧 Desarrollo continuo - Nuevas funcionalidades
+- 🧠 Hardware para pruebas - Compatibilidad con múltiples equipos
+- 📚 Documentación - Guías y manuales actualizados
+- ☕ Café del desarrollador - Para seguir programando
