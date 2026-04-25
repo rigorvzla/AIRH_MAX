@@ -29,7 +29,7 @@ AIRH es un asistente de inteligencia artificial activado por voz, diseñado para
 
 ## 🚀 Instalación Rápida
 
-1. **Descarga** la versión adecuada desde la sección [Releases](https://github.com/tu-usuario/av-airh/releases).
+1. **Descarga** la versión adecuada desde la sección [Releases](https://github.com/rigorvzla/AIRH_MAX/releases).
 2. **Ejecuta** el instalador para tu sistema operativo (Windows).
 3. **Sigue** el asistente de configuración inicial (calibración de micrófono y voz).
 
@@ -52,7 +52,7 @@ Una vez instalado, activa a AIRH con tu palabra de activación (ej: "Oye AIRH") 
 
 ¡Las contribuciones son bienvenidas! Puedes ayudar de varias formas:
 
-1. **Reporta errores** o sugiere mejoras abriendo un [Issue](https://github.com/tu-usuario/av-airh/issues).
+1. **Reporta errores** o sugiere mejoras abriendo un [Issue](https://github.com/rigorvzla/AIRH_MAX/issues).
 2. **Comparte el proyecto** con amigos y colegas.
 3. **Envía código** (Pull Requests) para nuevas funcionalidades o correcciones. Revisa nuestras [guías de contribución](CONTRIBUTING.md).
 
