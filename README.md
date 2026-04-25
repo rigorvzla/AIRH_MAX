@@ -1,7 +1,3 @@
-> **📌 NOTA IMPORTANTE**  
-> Este código corresponde a la **versión 7.1** del proyecto.  
-> A partir de la **versión 7.1** en adelante, el código ha sufrido modificaciones significativas por parte del desarrollador. ✨👨‍💻
-
 # 🎙️ AV-AIRH: Asistente Virtual por Voz con IA Local
 
 **Transforma tus palabras en acción.**  
@@ -15,15 +11,6 @@ AIRH es un asistente de inteligencia artificial activado por voz, diseñado para
 - **🧠 Inteligencia Racional:** No solo obedece comandos; prioriza tareas y toma decisiones lógicas.
 - **❤️ Respuesta Empática:** Su voz, tono y forma de responder están diseñados para ser cálidos y cercanos.
 - **🔒 Privado y Local (en AIRH-MAX):** Funciona sin depender de internet, con reconocimiento de voz rápido y preciso.
-
----
-
-## 📦 Versiones
-
-| Versión | Ideal para | Características Clave |
-| :--- | :--- | :--- |
-| **AV-AIRH Lite** | PCs básicos o tareas simples | Funcionalidad esencial, consumo ligero de recursos. |
-| **🚀 AV-AIRH MAX** | Equipos potentes, máximo rendimiento | IA 100% local, comandos complejos, integración con apps y automatizaciones avanzadas. |
 
 ---
 
