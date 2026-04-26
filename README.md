@@ -1,6 +1,6 @@
 # 🎙️ AV-AIRH MAX - Asistente Virtual por Voz con IA Local
 
-[![Versión](https://img.shields.io/badge/version-7.2.x-blue.svg)](https://github.com/rigorvzla/AIRH_MAX/releases)
+[![Versión](https://img.shields.io/badge/version-7.2.0-blue.svg)](https://github.com/rigorvzla/AIRH_MAX/releases)
 [![Licencia](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Windows-0078d7.svg)]()
 
