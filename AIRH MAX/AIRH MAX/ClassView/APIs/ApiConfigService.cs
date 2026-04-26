@@ -13,7 +13,7 @@ public class ApiConfigService
             httpClient.DefaultRequestHeaders.Clear();
             httpClient.DefaultRequestHeaders.Add("x-api-key", Engrane.API_KEY);
 
-            var response = await httpClient.GetAsync($"{Engrane.API_BASE_URL}/api/config/all");
+            var response = await httpClient.GetAsync($"{Engrane.API_BASE_URL}");
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
