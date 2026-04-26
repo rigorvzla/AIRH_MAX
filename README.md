@@ -63,28 +63,6 @@ Una vez instalado, activa a AIRH con tu palabra de activación (ej: "Oye AIRH") 
 📖 Para dominar **todos los comandos y funciones avanzadas**, consulta el [Manual de Usuario](https://github.com/rigorvzla/AIRH_MAX/blob/main/AIRH%20MAX/AIRH%20MAX/Manual.pdf).
 
 ---
-
-## 💰 Apoyar el Proyecto
-
-AV-AIRH MAX es **100% gratuito y de código abierto**, pero el desarrollo continuo requiere tiempo y recursos. Si deseas apoyar, puedes hacer una donación voluntaria de **$25 USD (mínimo)** a través de los siguientes medios:
-
-| Método | Detalles |
-| :--- | :--- |
-| 📧 **PayPal** | `rigorrico@gmail.com` |
-| 📱 **Zinli** | `rigorrico@gmail.com` |
-| 🏦 **Pago Móvil (Solo Venezuela)** | Cédula: `18466560`<br>Banco: `Banco Venezuela`<br>Teléfono: `04147495968` |
-| 🪙 **Cripto (USDT)** | Red: `TRC-20`<br>Dirección: `TMJNgo6sZLjC2GJ3gKu4KLCPerp8ENyXG3` |
-
-**✨ Beneficios para patrocinadores:**
-- 🥉 $25+ → Nombre en lista de patrocinadores
-- 🥈 $50+ → Nombre + acceso anticipado a betas
-- 🥇 $100+ → Todo lo anterior + soporte prioritario
-- 👑 $250+ → Feature solicitada por ti
-
-📧 Para donaciones y consultas: `rigorrico@gmail.com`
-
----
-
 ## 🤝 ¿Cómo Contribuir?
 
 ¡Las contribuciones son bienvenidas! Puedes ayudar de varias formas:
