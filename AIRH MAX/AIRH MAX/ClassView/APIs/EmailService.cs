@@ -8,7 +8,7 @@ namespace AIRH_MAX.ClassView.APIs
     public class EmailService
     {
         private static readonly HttpClient httpClient = new HttpClient();
-        private const string API_BASE_URL = "https://airh-max-api-py.onrender.com";        
+        private const string API_BASE_URL = "";        
 
         public class EmailRequest
         {
