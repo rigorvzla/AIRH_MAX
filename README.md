@@ -91,7 +91,3 @@ Este proyecto se distribuye bajo la licencia **MIT**. Consulta el archivo [LICEN
 ---
 
 **¿Te gusta AV-AIRH MAX?** ⭐ ¡Dale una estrella al repositorio y compártelo! Cada estrella y cada donación ayudan a que este proyecto siga vivo y evolucione.
-
----
-
-**Desde:** 2016 | **Desarrollador:** RigorVzla
