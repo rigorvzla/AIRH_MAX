@@ -1,6 +1,6 @@
 # 🎙️ AV-AIRH MAX - Asistente Virtual por Voz con IA Local
 
-[![Versión](https://img.shields.io/badge/version-7.2.0-blue.svg)](https://github.com/rigorvzla/AIRH_MAX/releases)
+[![Versión](https://img.shields.io/badge/version-7.3.0-blue.svg)](https://github.com/rigorvzla/AIRH_MAX/releases)
 [![Licencia](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Windows-0078d7.svg)]()
 
@@ -39,7 +39,6 @@ El proyecto ha crecido significativamente y **ya se complica seguir desarrollán
 | **❤️ Respuesta Empática** | ✅ | Su voz, tono y forma de responder son cálidos y cercanos |
 | **🔒 Privado y Local** | ✅ | Funciona sin depender de internet (modelos locales) |
 | **🧠 OpenCode como cerebro** | ✅ | Integración con modelos avanzados de IA |
-| **⚡ Optimización MCP** | ✅ | Protocolo de contexto para máxima eficiencia |
 
 ---
 
